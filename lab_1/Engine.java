@@ -2,37 +2,37 @@ import java.util.Objects;
 
 public class Engine {
 
-    private String name;
+    private String engineName;
 
-    private double power;
+    private double enginePower;
 
     public Engine() {
-        name = "default";
-        power = 0.0;
+        engineName = "default";
+        enginePower = 0.0;
     }
 
-    public Engine(String name, double power) {
-        this.name = name;
-        this.power = power;
+    public Engine(String engineName, double enginePower) {
+        this.engineName = engineName;
+        this.enginePower = enginePower;
     }
 
-    public String getName() {
-        return name;
+    public String getEngineName() {
+        return engineName;
     }
 
-    public double getPower() {
-        return power;
+    public double getEnginePower() {
+        return enginePower;
     }
 
-    public void setName(String name) {
-        if (!name.isEmpty()) {
-            this.name = name;
+    public void setEngineName(String engineName) {
+        if (!engineName.isEmpty()) {
+            this.engineName = engineName;
         }
     }
 
-    public void setPower(double power) {
-        if (power != 0.0) {
-            this.power = power;
+    public void setEnginePower(double enginePower) {
+        if (enginePower != 0.0) {
+            this.enginePower = enginePower;
         }
     }
 
@@ -41,20 +41,20 @@ public class Engine {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Engine engine = (Engine) o;
-        return Double.compare(engine.power, power) == 0 &&
-                Objects.equals(name, engine.name);
+        return Double.compare(engine.enginePower, enginePower) == 0 &&
+                Objects.equals(engineName, engine.engineName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, power);
+        return Objects.hash(engineName, enginePower);
     }
 
     @Override
     public String toString() {
         return "┃ Объект: двигатель" + "\n" +
-               "┃ Название двигателя: " + name + "\n" +
-               "┃ Мощность двигателя: " + power + "\n";
+               "┃ Название двигателя: " + engineName + "\n" +
+               "┃ Мощность двигателя: " + enginePower + "\n";
     }
 
 }

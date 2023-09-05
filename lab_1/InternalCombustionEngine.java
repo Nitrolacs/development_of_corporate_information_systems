@@ -2,32 +2,33 @@ import java.util.Objects;
 
 public class InternalCombustionEngine extends Engine {
 
-    private String type;
+    private String engineType;
 
-    private int torque;
+    private int engineTorque;
 
     public InternalCombustionEngine() {
-        type = "default";
-        torque = 0;
+        engineType = "default";
+        engineTorque = 0;
     }
 
-    public InternalCombustionEngine(String type, int torque, String name,
-                                    double power) {
-        super(name, power);
+    public InternalCombustionEngine(String engineType, int engineTorque,
+                                    String engineName,
+                                    double enginePower) {
+        super(engineName, enginePower);
 
-        this.type = type;
-        this.torque = torque;
+        this.engineType = engineType;
+        this.engineTorque = engineTorque;
     }
 
-    public void setType(String type) {
-        if (!type.isEmpty()) {
-            this.type = type;
+    public void setEngineType(String engineType) {
+        if (!engineType.isEmpty()) {
+            this.engineType = engineType;
         }
     }
 
-    public void setTorque(int torque) {
-        if (torque != 0) {
-            this.torque = torque;
+    public void setEngineTorque(int engineTorque) {
+        if (engineTorque != 0) {
+            this.engineTorque = engineTorque;
         }
     }
 
@@ -36,19 +37,19 @@ public class InternalCombustionEngine extends Engine {
         if (o == null || getClass() != o.getClass()) return false;
         InternalCombustionEngine internalCombustionEngine =
                 (InternalCombustionEngine) o;
-        return torque == internalCombustionEngine.torque &&
-                Objects.equals(type, internalCombustionEngine.type);
+        return engineTorque == internalCombustionEngine.engineTorque &&
+                Objects.equals(engineType, internalCombustionEngine.engineType);
     }
 
     public int hashCode() {
-        return Objects.hash(type, torque);
+        return Objects.hash(engineType, engineTorque);
     }
 
     public String toString() {
         return "┃ Объект: двигатель внутреннего сгорания" + "\n" +
-               "┃ Название двигателя: " + getName() + "\n" +
-               "┃ Мощность двигателя: " + getPower() + "\n" +
-               "┃ Тип ДВС: " + type + "\n" +
-               "┃ Крутящий момент ДВС: " + torque + "\n";
+                "┃ Название двигателя: " + getEngineName() + "\n" +
+                "┃ Мощность двигателя: " + getEnginePower() + "\n" +
+                "┃ Тип ДВС: " + engineType + "\n" +
+                "┃ Крутящий момент ДВС: " + engineTorque + "\n";
     }
 }
