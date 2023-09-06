@@ -27,7 +27,7 @@ public class Inputers {
         return userInt;
     }
 
-   public static String checkString() {
+    public static String checkString() {
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
 
