@@ -7,6 +7,13 @@ public class OperationsWithEngines {
     private static final int WITHOUT_CONSTRUCTOR = 1;
     private static final int WITH_CONSTRUCTOR = 2;
 
+    enum EngineChoice {
+        NEW_ENGINE,
+        NEW_ICE,
+        NEW_DIESEL_ENGINE,
+        NEW_JET_ENGINE
+    }
+
     public static Engine createNewEngine(int constructorUserChoice, String engineName,
                                           double enginePower) {
         Menu.printMessage(MenuChoices.ENGINE_IS_ADDED);
@@ -97,6 +104,7 @@ public class OperationsWithEngines {
         Menu.printMenuChoiceType();
         System.out.print(message);
         int engineUserChoice = Inputers.checkInt(1, 4); // TODO: Избавиться от маг. чисел
+        EngineChoice engineChoice = EngineChoice.values()[engineUserChoice - 1];
 
         Menu.printMenuChoiceConstructor();
         System.out.print(message);
@@ -110,21 +118,21 @@ public class OperationsWithEngines {
             enginePower = Inputers.checkDouble(0.0, Double.MAX_VALUE);
         }
 
-        switch (engineUserChoice) {
+        switch (engineChoice) {
 
-            case 1 ->
+            case NEW_ENGINE ->
                     engines.add(createNewEngine(constructorUserChoice, engineName,
                             enginePower));
 
-            case 2 ->
+            case NEW_ICE ->
                     engines.add(createNewICE(constructorUserChoice, engineName,
                             enginePower));
 
-            case 3 ->
+            case NEW_DIESEL_ENGINE ->
                     engines.add(createNewDieselEngine(constructorUserChoice, engineName,
                             enginePower));
 
-            case 4 ->
+            case NEW_JET_ENGINE ->
                     engines.add(createNewJetEngine(constructorUserChoice, engineName,
                             enginePower));
 
