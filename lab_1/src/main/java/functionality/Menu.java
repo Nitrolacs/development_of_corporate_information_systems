@@ -1,4 +1,6 @@
-package src.main.java;
+package src.main.java.functionality;
+
+import src.main.java.enums.MessageChoices;
 
 public class Menu {
     public static void printMenu() {
@@ -35,7 +37,7 @@ public class Menu {
                 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛""");
     }
 
-    public static void printMessage(MenuChoices menuChoice) {
+    public static void printMessage(MessageChoices menuChoice) {
 		  switch (menuChoice) {
 			case ENGINES_ARE_NOT_ADDED 
 			-> System.out.println("""

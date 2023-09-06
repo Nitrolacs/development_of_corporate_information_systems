@@ -1,6 +1,6 @@
-package src.main.java;
+package src.main.java.enums;
 
-enum MenuChoices {
+public enum MessageChoices {
 	ENGINES_ARE_NOT_ADDED,
 	ENGINE_IS_ADDED,
 	THIS_ITEM_IS_NOT_ON_THE_MENU

@@ -1,4 +1,10 @@
-package src.main.java;
+package src.main.java.functionality;
+
+import src.main.java.engines.DieselEngine;
+import src.main.java.engines.Engine;
+import src.main.java.engines.InternalCombustionEngine;
+import src.main.java.engines.JetEngine;
+import src.main.java.enums.MessageChoices;
 
 import java.util.*;
 
@@ -14,25 +20,26 @@ public class OperationsWithEngines {
         NEW_JET_ENGINE
     }
 
-    public static Engine createNewEngine(int constructorUserChoice, String engineName,
-                                          double enginePower) {
-        Menu.printMessage(MenuChoices.ENGINE_IS_ADDED);
+    public static Engine createNewEngine(int constructorUserChoice,
+                                         String engineName,
+                                         double enginePower) {
+        Menu.printMessage(MessageChoices.ENGINE_IS_ADDED);
 
         if (constructorUserChoice == WITHOUT_CONSTRUCTOR) {
             return new Engine();
         } else if (constructorUserChoice == WITH_CONSTRUCTOR) {
             return new Engine(engineName, enginePower);
         } else {
-            Menu.printMessage(MenuChoices.THIS_ITEM_IS_NOT_ON_THE_MENU);
+            Menu.printMessage(MessageChoices.THIS_ITEM_IS_NOT_ON_THE_MENU);
         }
         return new Engine();
     }
 
     public static InternalCombustionEngine createNewICE(int constructorUserChoice,
-                                                         String engineName,
-                                                         double enginePower) {
+                                                        String engineName,
+                                                        double enginePower) {
         if (constructorUserChoice == WITHOUT_CONSTRUCTOR) {
-            Menu.printMessage(MenuChoices.ENGINE_IS_ADDED);
+            Menu.printMessage(MessageChoices.ENGINE_IS_ADDED);
             return new InternalCombustionEngine();
         } else if (constructorUserChoice == WITH_CONSTRUCTOR) {
             System.out.print("┃ Введите тип двигателя: ");
@@ -41,20 +48,20 @@ public class OperationsWithEngines {
             System.out.print("┃ Введите крутящий момент двигателя (целое число): ");
             int engineTorque = Inputers.checkInt(1, Integer.MAX_VALUE);
 
-            Menu.printMessage(MenuChoices.ENGINE_IS_ADDED);
+            Menu.printMessage(MessageChoices.ENGINE_IS_ADDED);
             return new InternalCombustionEngine(engineType, engineTorque,
                     engineName, enginePower);
         } else {
-            Menu.printMessage(MenuChoices.THIS_ITEM_IS_NOT_ON_THE_MENU);
+            Menu.printMessage(MessageChoices.THIS_ITEM_IS_NOT_ON_THE_MENU);
         }
         return new InternalCombustionEngine(); // TODO: Проверить, нужен ли здесь еще один возврат объекта
     }
 
     public static DieselEngine createNewDieselEngine(int constructorUserChoice,
-                                                      String engineName,
-                                                      double enginePower) {
+                                                     String engineName,
+                                                     double enginePower) {
         if (constructorUserChoice == WITHOUT_CONSTRUCTOR) {
-            Menu.printMessage(MenuChoices.ENGINE_IS_ADDED);
+            Menu.printMessage(MessageChoices.ENGINE_IS_ADDED);
             return new DieselEngine();
         } else if (constructorUserChoice == WITH_CONSTRUCTOR) {
             System.out.print("┃ Введите производителя двигателя: ");
@@ -63,21 +70,20 @@ public class OperationsWithEngines {
             System.out.print("┃ Введите рабочий объём двигателя (вещественное число): ");
             double engineDisplacement = Inputers.checkDouble(Double.MIN_VALUE, Double.MAX_VALUE);
 
-            Menu.printMessage(MenuChoices.ENGINE_IS_ADDED);
+            Menu.printMessage(MessageChoices.ENGINE_IS_ADDED);
             return new DieselEngine(engineManufacturer, engineDisplacement,
                     engineName, enginePower);
         } else {
-            Menu.printMessage(MenuChoices.THIS_ITEM_IS_NOT_ON_THE_MENU);
+            Menu.printMessage(MessageChoices.THIS_ITEM_IS_NOT_ON_THE_MENU);
         }
         return new DieselEngine();
     }
 
-    // TODO: Попробовать применить шаблон фабрика!!!!!
     public static JetEngine createNewJetEngine(int constructorUserChoice,
-                                                String engineName,
-                                                double enginePower) {
+                                               String engineName,
+                                               double enginePower) {
         if (constructorUserChoice == WITHOUT_CONSTRUCTOR) {
-            Menu.printMessage(MenuChoices.ENGINE_IS_ADDED);
+            Menu.printMessage(MessageChoices.ENGINE_IS_ADDED);
             return new JetEngine();
         } else if (constructorUserChoice == WITH_CONSTRUCTOR) {
             System.out.print("┃ Введите тип топлива: ");
@@ -87,11 +93,11 @@ public class OperationsWithEngines {
             double engineSpecificImpulse = Inputers.checkDouble(Double.MIN_VALUE,
                     Double.MAX_VALUE);
 
-            Menu.printMessage(MenuChoices.ENGINE_IS_ADDED);
+            Menu.printMessage(MessageChoices.ENGINE_IS_ADDED);
             return new JetEngine(engineFuel, engineSpecificImpulse,
                     engineName, enginePower);
         } else {
-            Menu.printMessage(MenuChoices.THIS_ITEM_IS_NOT_ON_THE_MENU);
+            Menu.printMessage(MessageChoices.THIS_ITEM_IS_NOT_ON_THE_MENU);
         }
         return new JetEngine();
     }
@@ -136,7 +142,8 @@ public class OperationsWithEngines {
                     engines.add(createNewJetEngine(constructorUserChoice, engineName,
                             enginePower));
 
-            default -> Menu.printMessage(MenuChoices.THIS_ITEM_IS_NOT_ON_THE_MENU);
+            default ->
+                    Menu.printMessage(MessageChoices.THIS_ITEM_IS_NOT_ON_THE_MENU);
         }
     }
 
@@ -144,7 +151,7 @@ public class OperationsWithEngines {
         int count = 1;
 
         if (engines.isEmpty()) {
-            Menu.printMessage(MenuChoices.ENGINES_ARE_NOT_ADDED);
+            Menu.printMessage(MessageChoices.ENGINES_ARE_NOT_ADDED);
         } else {
             for (Engine e : engines) {
                 System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -169,7 +176,7 @@ public class OperationsWithEngines {
 
     public static void compareEngines(ArrayList<Engine> engines) {
         if (engines.isEmpty() || engines.size() < 2) {
-            Menu.printMessage(MenuChoices.ENGINES_ARE_NOT_ADDED);
+            Menu.printMessage(MessageChoices.ENGINES_ARE_NOT_ADDED);
         } else {
             printEngines(engines);
 
@@ -188,19 +195,14 @@ public class OperationsWithEngines {
                         secondEngine.hashCode()) {
                     if (firstEngine.equals(secondEngine)) {
                         System.out.println("┃ Двигатели равны.");
-                    }
-                    else {
+                    } else {
                         System.out.println("┃ Двигатели не равны.");
                     }
-                }
-
-                else {
+                } else {
                     System.out.println("┃ Хэши двух двигателей не равны." +
                             " Двигатели не равны");
                 }
-            }
-
-            else {
+            } else {
                 System.out.println("┃ Двигатели равны (одинаковые номера).");
             }
         }

@@ -1,19 +1,15 @@
 package src.main.java;
 
-import java.util.*;
+import src.main.java.engines.Engine;
+import src.main.java.enums.MenuItems;
+import src.main.java.functionality.Inputers;
+import src.main.java.functionality.Menu;
+import src.main.java.functionality.OperationsWithEngines;
 
-enum MenuItems {
-	ADD_NEW_ENGINE,
-	DELETE_ENGINE,
-	PRINT_ENGINES,
-	COMPARE_ENGINES,
-	EXIT_PROGRAM
-}
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
         int userChoice;
         ArrayList<Engine> engines = new ArrayList<>();
         MenuItems menuItem;
@@ -26,9 +22,12 @@ public class Main {
 
             switch (menuItem) {
                 case ADD_NEW_ENGINE -> OperationsWithEngines.addEngine(engines);
-                case DELETE_ENGINE -> OperationsWithEngines.deleteEngine(engines);
-                case PRINT_ENGINES -> OperationsWithEngines.printEngines(engines);
-                case COMPARE_ENGINES -> OperationsWithEngines.compareEngines(engines);
+                case DELETE_ENGINE ->
+                        OperationsWithEngines.deleteEngine(engines);
+                case PRINT_ENGINES ->
+                        OperationsWithEngines.printEngines(engines);
+                case COMPARE_ENGINES ->
+                        OperationsWithEngines.compareEngines(engines);
                 case EXIT_PROGRAM -> System.out.print("""
                         ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
                         ┃ Завершение программы... ┃
