@@ -35,8 +35,7 @@ public class Menu {
                 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛""");
     }
 
-    public static void printMessage(int choice) {
-		  MenuChoices menuChoice = MenuChoices.values()[choice - 1];
+    public static void printMessage(MenuChoices menuChoice) {
 		  switch (menuChoice) {
 			case ENGINES_ARE_NOT_ADDED 
 			-> System.out.println("""
