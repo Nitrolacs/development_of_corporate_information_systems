@@ -13,13 +13,13 @@ public class Inputers {
             try {
                 userInt = Integer.parseInt(userInput);
                 if (userInt < firstNumber || userInt > secondNumber) {
-                    System.out.println("┃ Число за пределами диапазона! Введите число заново: ");
+                    System.out.print("┃ Число за пределами диапазона! Введите число заново: ");
                     userInput = scanner.nextLine();
                 } else {
                     correctInput = true;
                 }
             } catch (NumberFormatException e) {
-                System.out.println("┃ Введено не целое число! Введите число заново: ");
+                System.out.print("┃ Введено не целое число! Введите число заново: ");
                 userInput = scanner.nextLine();
             }
         } while (!correctInput);
@@ -32,7 +32,7 @@ public class Inputers {
         String userInput = scanner.nextLine();
 
         while (userInput.isEmpty()) {
-            System.out.println("┃ Пустой ввод. Введите строку: ");
+            System.out.print("┃ Пустой ввод. Введите строку: ");
             userInput = scanner.nextLine();
         }
         return userInput;

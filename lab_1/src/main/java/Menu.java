@@ -1,7 +1,12 @@
 package src.main.java;
 
+enum MenuChoices {
+	ENGINES_ARE_NOT_ADDED,
+	ENGINE_IS_ADDED,
+	THIS_ITEM_IS_NOT_ON_THE_MENU
+}
+
 public class Menu {
-	
     public static void printMenu() {
         System.out.println("""
                 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -37,27 +42,24 @@ public class Menu {
     }
 
     public static void printMessage(int choice) {
-        if (choice == 1) {
-            System.out.println("""
+		  MenuChoices menuChoice = MenuChoices.values()[choice - 1];
+		  switch (menuChoice) {
+			case ENGINES_ARE_NOT_ADDED 
+			-> System.out.println("""
                     ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
                     ┃      Двигатели ещё не добавлены      ┃
                     ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛""");
-        }
-
-        if (choice == 2) {
-            System.out.println("""
+			case ENGINE_IS_ADDED 
+			-> System.out.println("""
                     ┏━━━━━━━━━━━━━━━━━━━━━━┓
                     ┃  Двигатель добавлен  ┃
                     ┗━━━━━━━━━━━━━━━━━━━━━━┛""");
-        }
-
-        if (choice == 3) {
-            System.out.println("""
+			case THIS_ITEM_IS_NOT_ON_THE_MENU 
+			-> System.out.println("""
                     ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
                     ┃  Такого пункта нет в меню.  ┃
                     ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛""");
-        }
+          }
     }
-
-
 }
+

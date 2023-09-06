@@ -2,24 +2,34 @@ package src.main.java;
 
 import java.util.*;
 
+enum MenuItems {
+	ADD_NEW_ENGINE,
+	DELETE_ENGINE,
+	PRINT_ENGINES,
+	COMPARE_ENGINES,
+	EXIT_PROGRAM
+}
+
 public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        String userChoice;
+        int userChoice;
         ArrayList<Engine> engines = new ArrayList<>();
+        MenuItems menuItem;
 
         do {
             Menu.printMenu();
             System.out.print("┃ Введите номер пункта: ");
-            userChoice = scanner.nextLine();
+            userChoice = Inputers.checkInt(1, 5);
+            menuItem = MenuItems.values()[userChoice - 1];
 
-            switch (userChoice) {
-                case "1" -> OperationsWithEngines.addEngine(engines);
-                case "2" -> OperationsWithEngines.deleteEngine(engines);
-                case "3" -> OperationsWithEngines.printEngines(engines);
-                case "4" -> OperationsWithEngines.compareEngines(engines);
-                case "5" -> System.out.print("""
+            switch (menuItem) {
+                case ADD_NEW_ENGINE -> OperationsWithEngines.addEngine(engines);
+                case DELETE_ENGINE -> OperationsWithEngines.deleteEngine(engines);
+                case PRINT_ENGINES -> OperationsWithEngines.printEngines(engines);
+                case COMPARE_ENGINES -> OperationsWithEngines.compareEngines(engines);
+                case EXIT_PROGRAM -> System.out.print("""
                         ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
                         ┃ Завершение программы... ┃
                         ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
@@ -30,6 +40,6 @@ public class Main {
                         ┗━━━━━━━━━━━━━━━━━━━━┛
                         """);
             }
-        } while (!userChoice.equals("5"));
+        } while (!(menuItem == MenuItems.EXIT_PROGRAM));
     }
 }
