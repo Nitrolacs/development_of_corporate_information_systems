@@ -74,8 +74,7 @@ public class Main {
                 if (userDouble < firstNumber || userDouble > secondNumber) {
                     System.out.print("┃ Число за пределами диапазона! Введите число заново: ");
                     userInput = scanner.nextLine();
-                }
-                else {
+                } else {
                     correctInput = true;
                 }
             } catch (NumberFormatException ex) {
@@ -124,14 +123,80 @@ public class Main {
 
         if (constructorUserChoice == 1) { // TODO: убрать магическое число
             return new Engine();
-        }
-        else if (constructorUserChoice == 2) {
+        } else if (constructorUserChoice == 2) {
             return new Engine(engineName, enginePower);
-        }
-        else {
+        } else {
             printMessage(3); // TODO: убрать магическое число
         }
         return new Engine();
+    }
+
+    private static InternalCombustionEngine createNewICE(int constructorUserChoice,
+                                                         String engineName,
+                                                         double enginePower) {
+        if (constructorUserChoice == 1) {
+            printMessage(2);
+            return new InternalCombustionEngine();
+        } else if (constructorUserChoice == 2) {
+            System.out.print("┃ Введите тип двигателя: ");
+            String engineType = checkString();
+
+            System.out.print("┃ Введите крутящий момент двигателя (целое число): ");
+            int engineTorque = checkInt(1, Integer.MAX_VALUE);
+
+            printMessage(2);
+            return new InternalCombustionEngine(engineType, engineTorque,
+                    engineName, enginePower);
+        } else {
+            printMessage(3);
+        }
+        return new InternalCombustionEngine(); // TODO: Проверить, нужен ли здесь еще один возврат объекта
+    }
+
+    private static DieselEngine createNewDieselEngine(int constructorUserChoice,
+                                                      String engineName,
+                                                      double enginePower) {
+        if (constructorUserChoice == 1) {
+            printMessage(2);
+            return new DieselEngine();
+        } else if (constructorUserChoice == 2) {
+            System.out.print("┃ Введите производителя двигателя: ");
+            String engineManufacturer = checkString();
+
+            System.out.print("┃ Введите рабочий объём двигателя (вещественное число): ");
+            double engineDisplacement = checkDouble(Double.MIN_VALUE, Double.MAX_VALUE);
+
+            printMessage(2);
+            return new DieselEngine(engineManufacturer, engineDisplacement,
+                    engineName, enginePower);
+        } else {
+            printMessage(3);
+        }
+        return new DieselEngine();
+    }
+
+    // TODO: Попробовать применить шаблон фабрика!!!!!
+    private static JetEngine createNewJetEngine(int constructorUserChoice,
+                                                String engineName,
+                                                double enginePower) {
+        if (constructorUserChoice == 1) {
+            printMessage(2);
+            return new JetEngine();
+        } else if (constructorUserChoice == 2) {
+            System.out.print("┃ Введите тип топлива: ");
+            String engineFuel = checkString();
+
+            System.out.print("┃ Введите удельный импульс двигателя (вещественное число): ");
+            double engineSpecificImpulse = checkDouble(Double.MIN_VALUE,
+                    Double.MAX_VALUE);
+
+            printMessage(2);
+            return new JetEngine(engineFuel, engineSpecificImpulse,
+                    engineName, enginePower);
+        } else {
+            printMessage(3);
+        }
+        return new JetEngine();
     }
 
     private static void addEngine(ArrayList<Engine> engines) {
@@ -156,9 +221,90 @@ public class Main {
         }
 
         switch (engineUserChoice) {
-            case 1:
-                engines.add(createNewEngine(constructorUserChoice, engineName,
-                        enginePower));
+
+            case 1 ->
+                    engines.add(createNewEngine(constructorUserChoice, engineName,
+                            enginePower));
+
+            case 2 ->
+                    engines.add(createNewICE(constructorUserChoice, engineName,
+                            enginePower));
+
+            case 3 ->
+                    engines.add(createNewDieselEngine(constructorUserChoice, engineName,
+                            enginePower));
+
+            case 4 ->
+                    engines.add(createNewJetEngine(constructorUserChoice, engineName,
+                            enginePower));
+
+            default -> printMessage(3);
+        }
+    }
+
+    private static void printEngines(ArrayList<Engine> engines) {
+        int count = 1;
+
+        if (engines.isEmpty()) {
+            printMessage(1);
+        } else {
+            for (Engine e : engines) {
+                System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+                System.out.println("┃                    Двигатель " + "№" + count + "                     ┃");
+                System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+                System.out.print(e.toString());
+                count++;
+            }
+        }
+    }
+
+    private static void deleteEngine(ArrayList<Engine> engines) {
+        printEngines(engines);
+
+        if (!engines.isEmpty()) {
+            System.out.print("┃ Введите номер двигателя для удаления: ");
+            int numberOfEngine = checkInt(1, engines.size());
+            engines.remove(numberOfEngine - 1);
+            System.out.println("┃ Двигатель №" + numberOfEngine + " удалён.");
+        }
+    }
+
+    private static void compareEngines(ArrayList<Engine> engines) {
+        if (engines.isEmpty() || engines.size() < 2) {
+            printMessage(1);
+        } else {
+            printEngines(engines);
+
+            System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            System.out.print("┃ Введите номер первого двигателя для сравнения: ");
+            int firstEngineIndex = checkInt(1, engines.size()) - 1;
+
+            System.out.print("┃ Введите номер второго двигателя для сравнения: ");
+            int secondEngineIndex = checkInt(1, engines.size()) - 1;
+
+            Engine firstEngine = engines.get(firstEngineIndex);
+            Engine secondEngine = engines.get(secondEngineIndex);
+
+            if (!(secondEngineIndex == firstEngineIndex)) {
+                if (firstEngine.hashCode() ==
+                        secondEngine.hashCode()) {
+                    if (firstEngine.equals(secondEngine)) {
+                        System.out.println("┃ Двигатели равны.");
+                    }
+                    else {
+                        System.out.println("┃ Двигатели не равны.");
+                    }
+                }
+
+                else {
+                    System.out.println("┃ Хэши двух двигателей не равны." +
+                            " Двигатели не равны");
+                }
+            }
+
+            else {
+                System.out.println("┃ Двигатели равны (одинаковые номера).");
+            }
         }
     }
 
@@ -174,30 +320,17 @@ public class Main {
             userChoice = scanner.nextLine();
 
             switch (userChoice) {
-
-                case "1":
-                    addEngine(engines);
-                    break;
-
-                case "2":
-                    break;
-
-                case "3":
-                    break;
-
-                case "4":
-                    break;
-
-                case "5":
-                    System.out.print("""
-                            ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-                            ┃ Завершение программы... ┃
-                            ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
-                            """);
-                    break;
-
-                default:
-                    break;
+                case "1" -> addEngine(engines);
+                case "2" -> deleteEngine(engines);
+                case "3" -> printEngines(engines);
+                case "4" -> compareEngines(engines);
+                case "5" -> System.out.print("""
+                        ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
+                        ┃ Завершение программы... ┃
+                        ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+                        """);
+                default -> {
+                }
             }
         } while (!userChoice.equals("5"));
     }

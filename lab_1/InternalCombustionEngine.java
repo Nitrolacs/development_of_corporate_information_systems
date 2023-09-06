@@ -46,7 +46,7 @@ public class InternalCombustionEngine extends Engine {
     }
 
     public String toString() {
-        return "┃ Объект: двигатель внутреннего сгорания" + "\n" +
+        return "┃ Двигатель внутреннего сгорания" + "\n" +
                 "┃ Название двигателя: " + getEngineName() + "\n" +
                 "┃ Мощность двигателя: " + getEnginePower() + "\n" +
                 "┃ Тип ДВС: " + engineType + "\n" +

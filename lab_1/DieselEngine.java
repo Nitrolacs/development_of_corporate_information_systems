@@ -45,7 +45,7 @@ public class DieselEngine extends Engine {
 
 
     public String toString() {
-        return "┃ Объект: реактивный двигатель" + "\n" +
+        return "┃ Дизельный двигатель" + "\n" +
                 "┃ Название двигателя: " + getEngineName() + "\n" +
                 "┃ Мощность двигателя: " + getEnginePower() + "\n" +
                 "┃ Производитель двигателя: " + engineManufacturer + "\n" +

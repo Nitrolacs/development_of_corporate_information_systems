@@ -44,7 +44,7 @@ public class JetEngine extends Engine {
     }
 
     public String toString() {
-        return "┃ Объект: реактивный двигатель" + "\n" +
+        return "┃ Реактивный двигатель" + "\n" +
                 "┃ Название двигателя: " + getEngineName() + "\n" +
                 "┃ Мощность двигателя: " + getEnginePower() + "\n" +
                 "┃ Топливо: " + engineFuel + "\n" +

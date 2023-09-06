@@ -52,7 +52,7 @@ public class Engine {
 
     @Override
     public String toString() {
-        return "┃ Объект: двигатель" + "\n" +
+        return "┃ Двигатель" + "\n" +
                "┃ Название двигателя: " + engineName + "\n" +
                "┃ Мощность двигателя: " + enginePower + "\n";
     }
