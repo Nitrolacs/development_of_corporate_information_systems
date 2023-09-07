@@ -8,11 +8,24 @@ import src.main.java.enums.MessageChoices;
 
 import java.util.*;
 
+/**
+ * Класс, содержащий основные методы для работ с двигателями
+ */
 public class OperationsWithEngines {
 
+    /**
+     * Константа для пункта меню (создание объекта без конструктора).
+     */
     private static final int WITHOUT_CONSTRUCTOR = 1;
+
+    /**
+     * Константа для пункта меню (создание объекта с конструктором).
+     */
     private static final int WITH_CONSTRUCTOR = 2;
 
+    /**
+     * Перечисление, содержащее выбор двигателей.
+     */
     enum EngineChoice {
         NEW_ENGINE,
         NEW_ICE,
@@ -20,6 +33,13 @@ public class OperationsWithEngines {
         NEW_JET_ENGINE
     }
 
+    /**
+     * Создает новый двигатель
+     * @param constructorUserChoice Выбор конструктора
+     * @param engineName Название двигателя
+     * @param enginePower Мощность двигателя
+     * @return Созданный двигатель
+     */
     public static Engine createNewEngine(int constructorUserChoice,
                                          String engineName,
                                          double enginePower) {
@@ -35,6 +55,13 @@ public class OperationsWithEngines {
         return new Engine();
     }
 
+    /**
+     * Создаёт новый двс
+     * @param constructorUserChoice Выбор конструктора
+     * @param engineName Название двигателя
+     * @param enginePower Мощность двигателя
+     * @return Созданный двигатель
+     */
     public static InternalCombustionEngine createNewICE(int constructorUserChoice,
                                                         String engineName,
                                                         double enginePower) {
@@ -54,9 +81,16 @@ public class OperationsWithEngines {
         } else {
             Menu.printMessage(MessageChoices.THIS_ITEM_IS_NOT_ON_THE_MENU);
         }
-        return new InternalCombustionEngine(); // TODO: Проверить, нужен ли здесь еще один возврат объекта
+        return new InternalCombustionEngine();
     }
 
+    /**
+     * Создаёт новый дизельный двигатель
+     * @param constructorUserChoice Выбор конструктора
+     * @param engineName Название двигателя
+     * @param enginePower Мощность двигателя
+     * @return Созданный двигатель
+     */
     public static DieselEngine createNewDieselEngine(int constructorUserChoice,
                                                      String engineName,
                                                      double enginePower) {
@@ -79,6 +113,13 @@ public class OperationsWithEngines {
         return new DieselEngine();
     }
 
+    /**
+     * Создаёт новый реактивный двигатель
+     * @param constructorUserChoice Выбор конструктора
+     * @param engineName Название двигателя
+     * @param enginePower Мощность двигателя
+     * @return Созданный двигатель
+     */
     public static JetEngine createNewJetEngine(int constructorUserChoice,
                                                String engineName,
                                                double enginePower) {
@@ -102,6 +143,10 @@ public class OperationsWithEngines {
         return new JetEngine();
     }
 
+    /**
+     * Добавляет новый двигатель
+     * @param engines Коллекция двигателей.
+     */
     public static void addEngine(ArrayList<Engine> engines) {
         String message = "┃ Введите номер пункта: ";
         String engineName = "";
@@ -109,12 +154,12 @@ public class OperationsWithEngines {
 
         Menu.printMenuChoiceType();
         System.out.print(message);
-        int engineUserChoice = Inputers.checkInt(1, 4); // TODO: Избавиться от маг. чисел
+        int engineUserChoice = Inputers.checkInt(1, 4);
         EngineChoice engineChoice = EngineChoice.values()[engineUserChoice - 1];
 
         Menu.printMenuChoiceConstructor();
         System.out.print(message);
-        int constructorUserChoice = Inputers.checkInt(1, 2); // TODO: Избавиться от маг. чисел
+        int constructorUserChoice = Inputers.checkInt(1, 2);
 
         if (constructorUserChoice != 1) {
             System.out.print("┃ Введите название двигателя: ");
@@ -147,6 +192,10 @@ public class OperationsWithEngines {
         }
     }
 
+    /**
+     * Выводит все двигатели
+     * @param engines Коллекция двигателей
+     */
     public static void printEngines(ArrayList<Engine> engines) {
         int count = 1;
 
@@ -163,6 +212,10 @@ public class OperationsWithEngines {
         }
     }
 
+    /**
+     * Удаляет выбранный двигатель
+     * @param engines Коллекция двигателей
+     */
     public static void deleteEngine(ArrayList<Engine> engines) {
         printEngines(engines);
 
@@ -174,6 +227,10 @@ public class OperationsWithEngines {
         }
     }
 
+    /**
+     * Сравнивает двигатели (по индексу)
+     * @param engines Коллекция двигателей
+     */
     public static void compareEngines(ArrayList<Engine> engines) {
         if (engines.isEmpty() || engines.size() < 2) {
             Menu.printMessage(MessageChoices.ENGINES_ARE_NOT_ADDED);

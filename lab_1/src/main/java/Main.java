@@ -8,7 +8,16 @@ import src.main.java.functionality.OperationsWithEngines;
 
 import java.util.*;
 
+/**
+ * Основной класс, точка входа в программу.
+ */
 public class Main {
+
+    /**
+     * Основная функция программы.
+     * @param args массив аргументов, введённых при запуске через командную
+     *             строку
+     */
     public static void main(String[] args) {
         int userChoice;
         ArrayList<Engine> engines = new ArrayList<>();

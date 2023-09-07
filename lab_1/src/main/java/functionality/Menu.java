@@ -2,7 +2,14 @@ package src.main.java.functionality;
 
 import src.main.java.enums.MessageChoices;
 
+/**
+ * Класс, отвечающий за вывод различных меню в программе.
+ */
 public class Menu {
+
+    /**
+     * Выводит меню программы.
+     */
     public static void printMenu() {
         System.out.println("""
                 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -16,6 +23,9 @@ public class Menu {
                 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛""");
     }
 
+    /**
+     * Выводит меню параметров.
+     */
     public static void printMenuChoiceType() {
         System.out.println("""
                 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -28,7 +38,9 @@ public class Menu {
                 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛""");
     }
 
-
+    /**
+     * Выводит меню параметров.
+     */
     public static void printMenuChoiceConstructor() {
         System.out.println("""
                 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -37,6 +49,10 @@ public class Menu {
                 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛""");
     }
 
+    /**
+     * Выводит предупреждения.
+     * @param menuChoice Выбор сообщения
+     */
     public static void printMessage(MessageChoices menuChoice) {
 		  switch (menuChoice) {
 			case ENGINES_ARE_NOT_ADDED 

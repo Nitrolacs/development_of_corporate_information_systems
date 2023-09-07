@@ -2,7 +2,17 @@ package src.main.java.functionality;
 
 import java.util.*;
 
+/**
+ * Класс, содержащий методы для проверки введённых данных.
+ */
 public class Inputers {
+
+    /**
+     * Проверяет, что ввод - целое число.
+     * @param firstNumber Нижний диапазон.
+     * @param secondNumber Верхний диапазон.
+     * @return userInt Целое число.
+     */
     public static int checkInt(int firstNumber, int secondNumber) {
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
@@ -27,6 +37,10 @@ public class Inputers {
         return userInt;
     }
 
+    /**
+     * Проверяет получение строки от ввода пользователя.
+     * @return Введенная строка.
+     */
     public static String checkString() {
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
@@ -38,7 +52,12 @@ public class Inputers {
         return userInput;
     }
 
-    // TODO: Объедини checkInt и checkDouble, чтобы избежать повторений
+    /**
+     * Проверяет, что ввод - вещественное число.
+     * @param firstNumber Нижний диапазон.
+     * @param secondNumber Верхний диапазон.
+     * @return userDouble Вещественное число.
+     */
     public static double checkDouble(double firstNumber, double secondNumber) {
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();

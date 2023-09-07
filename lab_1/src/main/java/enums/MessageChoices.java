@@ -1,5 +1,8 @@
 package src.main.java.enums;
 
+/**
+ * Перечисление пунктов служебных сообщений.
+ */
 public enum MessageChoices {
 	ENGINES_ARE_NOT_ADDED,
 	ENGINE_IS_ADDED,

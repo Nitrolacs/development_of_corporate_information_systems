@@ -1,5 +1,8 @@
 package src.main.java.enums;
 
+/**
+ * Перечисление основных пунктов меню.
+ */
 public enum MenuItems {
     ADD_NEW_ENGINE,
     DELETE_ENGINE,
