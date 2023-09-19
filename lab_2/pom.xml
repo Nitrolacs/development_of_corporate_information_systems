@@ -14,9 +14,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <name>lab_2 Maven Webapp</name>
-    <url>http://maven.apache.org</url>
-
     <dependencies>
 
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
@@ -43,7 +40,6 @@
     </dependencies>
 
     <build>
-        <finalName>lab_2</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
