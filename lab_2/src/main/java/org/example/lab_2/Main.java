@@ -19,9 +19,9 @@ public class Main {
                                                 RaceWeekend.class);
         RaceWeekend rdrcWeekend = context.getBean("rdrcWeekendBean",
                                                   RaceWeekend.class);
-        RaceWeekend rdsWeekend = context.getBean("rdsWeekend",
+        RaceWeekend rdsWeekend = context.getBean("rdsWeekendBean",
                                                  RaceWeekend.class);
-        RaceWeekend wrcWeekend = context.getBean("wrcWeekend",
+        RaceWeekend wrcWeekend = context.getBean("wrcWeekendBean",
                                                  RaceWeekend.class);
 
         f1Weekend.startWeekend();

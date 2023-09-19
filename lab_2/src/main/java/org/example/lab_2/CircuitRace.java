@@ -23,6 +23,6 @@ public class CircuitRace implements Race{
      */
     @Override
     public void showInformation() {
-        System.out.println("В кольцевой гонке " + numberOfLaps + "кругов");
+        System.out.println("В кольцевой гонке " + numberOfLaps + " кругов");
     }
 }
