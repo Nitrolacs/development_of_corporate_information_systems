@@ -1,7 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd">
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <context:property-placeholder location="classpath:raceWeekend.properties"/>
+
+    <bean id="dragRaceBean"
+          class="org.example.lab_2.DragRace">
+        <constructor-arg value="${dragRace.maxPower}" />
+    </bean>
+
+    <bean id="driftRaceBean"
+          class="org.example.lab_2.DriftRace">
+        <constructor-arg value="${driftRace.numberOfRacers}" />
+    </bean>
+
+    <bean id="circuitRaceBean"
+          class="org.example.lab_2.CircuitRace">
+        <constructor-arg value="${circuitRace.numberOfLaps}" />
+    </bean>
+
+    <bean id="rallyRaceBean"
+          class="org.example.lab_2.RallyRace">
+        <constructor-arg value="${rallyRace.trackName}" />
+    </bean>
+
+    <bean id="f1WeekendBean"
+          class="org.example.lab_2.RaceWeekend">
+        <constructor-arg name="race" ref="circuitRaceBean"/>
+        <constructor-arg name="name" value="${f1Weekend.name}" />
+        <property name="durationInHours" value="${f1Weekend.durationInHours}" />
+    </bean>
+
+    <bean id="rdrcWeekendBean"
+          class="org.example.lab_2.RaceWeekend">
+        <constructor-arg name="race" ref="dragRaceBean"/>
+        <constructor-arg name="name" value="${rdrcWeekend.name}" />
+        <property name="durationInHours" value="${rdrcWeekend.durationInHours}" />
+    </bean>
+
+    <bean id="rdsWeekendBean"
+          class="org.example.lab_2.RaceWeekend">
+        <constructor-arg name="race" ref="driftRaceBean"/>
+        <constructor-arg name="name" value="${rdsWeekend.name}" />
+        <property name="durationInHours" value="${rdsWeekend.durationInHours}" />
+    </bean>
+
+    <bean id="wrcWeekendBean"
+          class="org.example.lab_2.RaceWeekend">
+        <constructor-arg name="race" ref="rallyRaceBean"/>
+        <constructor-arg name="name" value="${wrcWeekend.name}" />
+        <property name="durationInHours" value="${wrcWeekend.durationInHours}" />
+    </bean>
 
 </beans>

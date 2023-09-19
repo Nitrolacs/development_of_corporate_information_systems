@@ -15,18 +15,18 @@ public class Main {
         ClassPathXmlApplicationContext context = new
                 ClassPathXmlApplicationContext("applicationContext.xml");
 
-        RaceWeekend F1Weekend = context.getBean("F1WeekendBean",
+        RaceWeekend f1Weekend = context.getBean("f1WeekendBean",
                                                 RaceWeekend.class);
-        RaceWeekend RDRCWeekend = context.getBean("RDRCWeekendBean",
+        RaceWeekend rdrcWeekend = context.getBean("rdrcWeekendBean",
                                                   RaceWeekend.class);
-        RaceWeekend RDSWeekend = context.getBean("RDSWeekend",
+        RaceWeekend rdsWeekend = context.getBean("rdsWeekend",
                                                  RaceWeekend.class);
-        RaceWeekend WRCWeekend = context.getBean("WRCWeekend",
+        RaceWeekend wrcWeekend = context.getBean("wrcWeekend",
                                                  RaceWeekend.class);
 
-        F1Weekend.startWeekend();
-        RDRCWeekend.startWeekend();
-        RDSWeekend.startWeekend();
-        WRCWeekend.startWeekend();
+        f1Weekend.startWeekend();
+        rdrcWeekend.startWeekend();
+        rdsWeekend.startWeekend();
+        wrcWeekend.startWeekend();
     }
 }
