@@ -58,6 +58,6 @@
                 </configuration>
             </plugin>
         </plugins>
-    </buildo>
+    </build>
 
 </project>

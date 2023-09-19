@@ -42,9 +42,10 @@ public class RaceWeekend {
      * Метод старта гоночного уикенда.
      */
     public void startWeekend() {
-        System.out.println("Гоночный уикенд " + race + " начался! Он " +
+        System.out.println("Гоночный уикенд " + name + " начался! Он " +
                 "продлится " + durationInHours + " часов.");
         System.out.println("Информация о гонке:");
         race.showInformation();
+        System.out.println("");
     }
 }
