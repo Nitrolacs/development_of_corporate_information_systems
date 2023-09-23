@@ -1,4 +1,4 @@
-package org.example.lab_2;
+package org.example.lab_3;
 
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -18,16 +18,16 @@ public class Main {
 
         RaceWeekend f1Weekend = context.getBean("f1WeekendBean",
                                                 RaceWeekend.class);
-        //RaceWeekend rdrcWeekend = context.getBean("rdrcWeekendBean",
-        //                                          RaceWeekend.class);
-        //RaceWeekend rdsWeekend = context.getBean("rdsWeekendBean",
-        //                                         RaceWeekend.class);
-        //RaceWeekend wrcWeekend = context.getBean("wrcWeekendBean",
-        //                                         RaceWeekend.class);
+        RaceWeekend rdrcWeekend = context.getBean("rdrcWeekendBean",
+                                                  RaceWeekend.class);
+        RaceWeekend rdsWeekend = context.getBean("rdsWeekendBean",
+                                                 RaceWeekend.class);
+        RaceWeekend wrcWeekend = context.getBean("wrcWeekendBean",
+                                                 RaceWeekend.class);
 
         f1Weekend.startWeekend();
-        //rdrcWeekend.startWeekend();
-        //rdsWeekend.startWeekend();
-        //wrcWeekend.startWeekend();
+        rdrcWeekend.startWeekend();
+        rdsWeekend.startWeekend();
+        wrcWeekend.startWeekend();
     }
 }

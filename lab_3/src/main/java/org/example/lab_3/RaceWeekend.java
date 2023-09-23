@@ -1,10 +1,10 @@
-package org.example.lab_2;
+package org.example.lab_3;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import java.beans.ConstructorProperties;
 
 public class RaceWeekend {
 
@@ -53,7 +53,6 @@ public class RaceWeekend {
      * Сеттер поля durationInHours
      * @param durationInHours Длительность гонки в часах
      */
-    @Value("${f1Weekend.durationInHours}")
     public void setDurationInHours(int durationInHours) {
         this.durationInHours = durationInHours;
     }

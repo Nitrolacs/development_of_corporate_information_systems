@@ -1,6 +1,4 @@
-package org.example.lab_2;
-
-import org.springframework.beans.factory.annotation.Value;
+package org.example.lab_3;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -50,7 +48,7 @@ public class DragRace implements Race {
 
     /**
      * Фабричный метод
-     * @param maxEnginePower - максмальная мощность двигателя
+     * @param maxEnginePower - максимальная мощность двигателя
      * @return DragRace
      */
     public static DragRace createDragRace(int maxEnginePower) {

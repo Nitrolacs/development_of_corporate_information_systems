@@ -1,4 +1,4 @@
-package org.example.lab_2;
+package org.example.lab_3;
 
 /**
  * Интерфейс гонки
