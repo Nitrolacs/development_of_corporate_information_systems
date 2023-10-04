@@ -35,4 +35,16 @@ public class BikeDao {
         int result = jdbcTemplate.update("DELETE FROM bike WHERE id=?", id);
         return result;
     }
+
+    public void update(int id, Bike newBike) {
+        jdbcTemplate.update("UPDATE bike SET price=?, numberOfSpeeds=?, " +
+                "name=?, type=?, frameMaterial=? WHERE id=?", newBike.getPrice(),
+                newBike.getNumberOfSpeeds(), newBike.getName(), newBike.getType(),
+                newBike.getFrameMaterial(), id);
+    }
+
+    public boolean isBikeExists(int id) {
+        int result = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM bike where id=?", new Object[] { id }, Integer.class);
+        return result > 0;
+    }
 }

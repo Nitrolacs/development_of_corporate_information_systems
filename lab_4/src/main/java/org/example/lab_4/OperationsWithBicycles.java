@@ -63,7 +63,40 @@ public class OperationsWithBicycles {
             if (result == 1) {
                 System.out.println("┃ Велосипед с id " + numberOfBike + " удалён.");
             } else {
-                System.out.println("┃ Велосипеда с таким id нет.");
+                Menu.printMessage(MessageChoices.BIKE_IS_NOT_EXIST);
+            }
+        }
+    }
+
+    public static void editBike(BikeDao bikeDao) {
+        printAllBicycles(bikeDao);
+
+        if (!bikeDao.findAll().isEmpty()) {
+            System.out.print("\n┃ Введите id велосипеда для изменения: ");
+            int numberOfBike = Inputers.checkInt(1, Integer.MAX_VALUE);
+
+            if (bikeDao.isBikeExists(numberOfBike)) {
+                System.out.print("┃ Введите цену велосипеда: ");
+                Double bikePrice = Inputers.checkDouble(0.0, Double.MAX_VALUE);
+
+                System.out.print("┃ Введите количество скоростей велосипеда: ");
+                Integer bikeNumberOfSpeeds = Inputers.checkInt(0, Integer.MAX_VALUE);
+
+                System.out.print("┃ Введите название велосипеда: ");
+                String bikeName = Inputers.checkString();
+
+                System.out.print("┃ Введите тип велосипеда: ");
+                String bikeType = Inputers.checkString();
+
+                System.out.print("┃ Введите материал рамы велосипеда: ");
+                String bikeFrameMaterial = Inputers.checkString();
+
+                bikeDao.update(numberOfBike, new Bike(null, bikePrice, bikeNumberOfSpeeds,
+                        bikeName, bikeType, bikeFrameMaterial));
+
+                System.out.print("┃ Данные о велосипеде изменены! ");
+            } else {
+                Menu.printMessage(MessageChoices.BIKE_IS_NOT_EXIST);
             }
         }
     }

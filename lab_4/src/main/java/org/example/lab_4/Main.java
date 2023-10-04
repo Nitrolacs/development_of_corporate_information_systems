@@ -29,7 +29,7 @@ public class Main {
             switch (menuItem) {
                 case ADD_NEW_BIKE -> OperationsWithBicycles.insertNewBike(bikeDao);
                 case PRINT_ALL_BICYCLES -> OperationsWithBicycles.printAllBicycles(bikeDao);
-                //case EDIT_BIKE_BY_ID -> ;
+                case EDIT_BIKE_BY_ID -> OperationsWithBicycles.editBike(bikeDao);
                 case DELETE_BIKE_BY_ID -> OperationsWithBicycles.deleteBike(bikeDao);
                 //case SEARCH_BICYCLES_WITH_LOWER_PRICE -> ;
                                 case EXIT_PROGRAM -> System.out.print("""
