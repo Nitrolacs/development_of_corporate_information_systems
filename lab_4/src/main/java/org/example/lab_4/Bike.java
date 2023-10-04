@@ -11,7 +11,7 @@ public class Bike {
     private String frameMaterial;
 
     public Bike() {
-        this.id = 1;
+        this.id = null;
         this.price = 1.0;
         this.numberOfSpeeds = 1;
         this.name = "default";
@@ -95,12 +95,11 @@ public class Bike {
      */
     @Override
     public String toString() {
-        return "┃ Велосипед" + "\n" +
-                "┃ Название велосипеда: " + getName() + "\n" +
+        return  "┃ Название велосипеда: " + getName() + "\n" +
                 "┃ Id велосипеда: " + getId() + "\n" +
                 "┃ Цена велосипеда: " + getPrice() + "\n" +
                 "┃ Количество скоростей: " + getNumberOfSpeeds() + "\n" +
                 "┃ Тип велосипеда: " + getType() + "\n" +
-                "┃ Материал рамы: " + getFrameMaterial() + "\n";
+                "┃ Материал рамы: " + getFrameMaterial();
     }
 }
