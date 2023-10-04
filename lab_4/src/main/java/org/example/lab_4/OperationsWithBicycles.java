@@ -50,4 +50,21 @@ public class OperationsWithBicycles {
             }
         }
     }
+
+    public static void deleteBike(BikeDao bikeDao) {
+        printAllBicycles(bikeDao);
+
+        if (!bikeDao.findAll().isEmpty()) {
+            System.out.print("\n┃ Введите id велосипеда для удаления: ");
+            int numberOfBike = Inputers.checkInt(1, Integer.MAX_VALUE);
+
+            int result = bikeDao.delete(numberOfBike);
+
+            if (result == 1) {
+                System.out.println("┃ Велосипед с id " + numberOfBike + " удалён.");
+            } else {
+                System.out.println("┃ Велосипеда с таким id нет.");
+            }
+        }
+    }
 }

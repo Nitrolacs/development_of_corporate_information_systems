@@ -30,4 +30,9 @@ public class BikeDao {
                 bike.getPrice(), bike.getNumberOfSpeeds(), bike.getName(),
                 bike.getType(), bike.getFrameMaterial());
     }
+
+    public int delete(int id) {
+        int result = jdbcTemplate.update("DELETE FROM bike WHERE id=?", id);
+        return result;
+    }
 }
