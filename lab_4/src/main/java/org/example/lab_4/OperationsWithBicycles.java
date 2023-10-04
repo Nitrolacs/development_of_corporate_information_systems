@@ -36,9 +36,7 @@ public class OperationsWithBicycles {
         Menu.printMessage(MessageChoices.BIKE_IS_ADDED);
     }
 
-    public static void printAllBicycles(BikeDao bikeDao) {
-        List<Bike> bicycles = bikeDao.findAll();
-
+    public static void showBicycles(List<Bike> bicycles) {
         if (bicycles.isEmpty()) {
             Menu.printMessage(MessageChoices.BICYCLES_ARE_NOT_ADDED);
         } else {
@@ -50,6 +48,12 @@ public class OperationsWithBicycles {
             }
         }
     }
+
+    public static void printAllBicycles(BikeDao bikeDao) {
+        List<Bike> bicycles = bikeDao.findAll();
+        showBicycles(bicycles);
+    }
+
 
     public static void deleteBike(BikeDao bikeDao) {
         printAllBicycles(bikeDao);
@@ -99,5 +103,15 @@ public class OperationsWithBicycles {
                 Menu.printMessage(MessageChoices.BIKE_IS_NOT_EXIST);
             }
         }
+    }
+
+    public static void searchByFieldPrice(BikeDao bikeDao) {
+        System.out.print("┃ Введите цену: ");
+        Double price = Inputers.checkDouble(0.0, Double.MAX_VALUE);
+        System.out.println("┃ Велосипеды, цена которых ниже введённой: ");
+
+        List<Bike> bicycles = bikeDao.findAllBicyclesWherePriceIsLower(price);
+
+        showBicycles(bicycles);
     }
 }

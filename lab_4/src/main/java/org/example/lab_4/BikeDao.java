@@ -47,4 +47,11 @@ public class BikeDao {
         int result = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM bike where id=?", new Object[] { id }, Integer.class);
         return result > 0;
     }
+
+    public List<Bike> findAllBicyclesWherePriceIsLower(Double price) {
+        List<Bike> bicycles = jdbcTemplate.query("SELECT * FROM bike WHERE price < ?",
+                new BeanPropertyRowMapper<>(Bike.class), price);
+
+        return bicycles;
+    }
 }
