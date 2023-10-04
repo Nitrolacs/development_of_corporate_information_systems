@@ -2,8 +2,15 @@ package org.example.lab_4;
 
 import java.util.List;
 
+/**
+ * Класс взаимодействия с велосипедами
+ */
 public class OperationsWithBicycles {
 
+    /**
+     * Вставка нового велосипеда
+     * @param bikeDao источник данных
+     */
     public static void insertNewBike(BikeDao bikeDao) {
         String message = "┃ Введите номер пункта: ";
 
@@ -36,6 +43,10 @@ public class OperationsWithBicycles {
         Menu.printMessage(MessageChoices.BIKE_IS_ADDED);
     }
 
+    /**
+     * Вывод велосипедов
+     * @param bicycles список велосипедов
+     */
     public static void showBicycles(List<Bike> bicycles) {
         if (bicycles.isEmpty()) {
             Menu.printMessage(MessageChoices.BICYCLES_ARE_NOT_ADDED);
@@ -49,12 +60,19 @@ public class OperationsWithBicycles {
         }
     }
 
+    /**
+     * Получение все велосипеды для вывода
+     * @param bikeDao источник данных
+     */
     public static void printAllBicycles(BikeDao bikeDao) {
         List<Bike> bicycles = bikeDao.findAll();
         showBicycles(bicycles);
     }
 
-
+    /**
+     * Удаление велосипеда.
+     * @param bikeDao источник данных
+     */
     public static void deleteBike(BikeDao bikeDao) {
         printAllBicycles(bikeDao);
 
@@ -72,6 +90,10 @@ public class OperationsWithBicycles {
         }
     }
 
+    /**
+     * Изменение данных о велосипеде
+     * @param bikeDao источник данных
+     */
     public static void editBike(BikeDao bikeDao) {
         printAllBicycles(bikeDao);
 
@@ -105,6 +127,10 @@ public class OperationsWithBicycles {
         }
     }
 
+    /**
+     * Получение всех велосипедов, цена которой ниже введённой
+     * @param bikeDao источник данных
+     */
     public static void searchByFieldPrice(BikeDao bikeDao) {
         System.out.print("┃ Введите цену: ");
         Double price = Inputers.checkDouble(0.0, Double.MAX_VALUE);
