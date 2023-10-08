@@ -23,11 +23,12 @@ public class BicyclesController {
         return "bicycles/index";
     }
 
-    @GetMapping("/{id}")
+    /**
+    //@GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("bike", bikeDAO.show(id));
         return "bicycles/show";
-    }
+    }**/
 
     @GetMapping("/new")
     public String newBike(@ModelAttribute("bike") Bike bike) {
