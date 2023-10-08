@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Новый велосипед</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/bicycles}" th:object="${bike}">
+    <label for="name">Введите название велосипеда: </label>
+    <input type="text" th:field="*{name}" id="name">
+    <br/>
+    <input type="submit" value="Создать!"/>
+</form>
+</body>
+</html>
