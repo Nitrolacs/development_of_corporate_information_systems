@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Новый велосипед</title>
+    <title>Редактирование велосипеда</title>
 </head>
 <body>
-<form th:method="POST" th:action="@{/bicycles}" th:object="${bike}">
+<form th:method="PATCH" th:action="@{/bicycles/{id}(id=${bike.getId()})}" th:object="${bike}">
     <label for="name">Введите название велосипеда: </label>
     <input type="text" th:field="*{name}" id="name">
     <br/>
@@ -22,7 +22,7 @@
     <input type="text" th:field="*{frameMaterial}" id="frameMaterial" />
 
     <br/>
-    <input type="submit" value="Создать!"/>
+    <input type="submit" value="Обновить!"/>
 </form>
 </body>
 </html>

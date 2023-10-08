@@ -23,12 +23,11 @@ public class BicyclesController {
         return "bicycles/index";
     }
 
-    /**
-    //@GetMapping("/{id}")
+    @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("bike", bikeDAO.show(id));
         return "bicycles/show";
-    }**/
+    }
 
     @GetMapping("/new")
     public String newBike(@ModelAttribute("bike") Bike bike) {
@@ -38,6 +37,24 @@ public class BicyclesController {
     @PostMapping()
     public String create(@ModelAttribute("bike") Bike bike) {
         bikeDAO.insert(bike);
+        return "redirect:/bicycles";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String edit(Model model, @PathVariable("id") int id) {
+        model.addAttribute("bike", bikeDAO.show(id));
+        return "bicycles/edit";
+    }
+
+    @PatchMapping("/{id}")
+    public String update(@ModelAttribute("bike") Bike bike, @PathVariable("id") int id) {
+        bikeDAO.update(id, bike);
+        return "redirect:/bicycles";
+    }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") int id) {
+        bikeDAO.delete(id);
         return "redirect:/bicycles";
     }
 }

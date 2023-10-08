@@ -94,4 +94,10 @@ public class BikeDAO {
 
         return bicycles;
     }
+
+    public Bike show(int id) {
+        return jdbcTemplate.query("SELECT * FROM Bike WHERE id=?",
+                new Object[]{id}, new BeanPropertyRowMapper<>(Bike.class)).
+                stream().findAny().orElse(null);
+    }
 }
