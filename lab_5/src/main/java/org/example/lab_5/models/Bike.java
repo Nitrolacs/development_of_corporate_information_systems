@@ -2,6 +2,7 @@ package org.example.lab_5.models;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -18,13 +19,13 @@ public class Bike {
      * Цена велосипеда
      */
     @Min(value = 0, message = "Цена велосипеда не может быть меньше 0!")
-    private Double price;
+    private double price;
 
     /**
      * Количество скоростей у велосипеда
      */
     @Min(value = 1, message = "Количество скоростей не может быть меньше 1!")
-    private Integer numberOfSpeeds;
+    private int numberOfSpeeds;
 
     /**
      * Название велосипеда
