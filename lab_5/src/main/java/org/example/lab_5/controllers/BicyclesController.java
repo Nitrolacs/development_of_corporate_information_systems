@@ -5,7 +5,10 @@ import org.example.lab_5.models.Bike;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/bicycles")
@@ -35,7 +38,11 @@ public class BicyclesController {
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("bike") Bike bike) {
+    public String create(@ModelAttribute("bike") @Valid Bike bike,
+                         BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            return "bicycles/new";
+
         bikeDAO.insert(bike);
         return "redirect:/bicycles";
     }
@@ -47,7 +54,12 @@ public class BicyclesController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("bike") Bike bike, @PathVariable("id") int id) {
+    public String update(@ModelAttribute("bike") @Valid Bike bike,
+                         BindingResult bindingResult,
+                         @PathVariable("id") int id) {
+        if (bindingResult.hasErrors())
+            return "bicycles/edit";
+
         bikeDAO.update(id, bike);
         return "redirect:/bicycles";
     }

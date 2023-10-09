@@ -1,5 +1,9 @@
 package org.example.lab_5.models;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 /**
  * Класс велосипеда
  */
@@ -13,23 +17,37 @@ public class Bike {
     /**
      * Цена велосипеда
      */
+    @Min(value = 0, message = "Цена велосипеда не может быть меньше 0!")
     private Double price;
+
     /**
      * Количество скоростей у велосипеда
      */
+    @Min(value = 1, message = "Количество скоростей не может быть меньше 1!")
     private Integer numberOfSpeeds;
 
     /**
      * Название велосипеда
      */
+    @NotEmpty(message = "Название не может быть пустым!")
+    @Size(min = 2, max = 150, message = "Название должно быть длиной от " +
+            "2 до 150 символов!")
     private String name;
+
     /**
      * Тип велосипеда
      */
+    @NotEmpty(message = "Тип велосипеда не может быть пустым!")
+    @Size(min = 2, max = 100, message = "Тип велосипеда должен быть длиной от" +
+            "2 до 100 символов")
     private String type;
+
     /**
      * Материал рамы велосипеда
      */
+    @NotEmpty(message = "Материал рамы велосипеда не может быть пустым!")
+    @Size(min = 2, max = 100, message = "Материал рамы должен быть длиной от" +
+            "2 до 100 символов")
     private String frameMaterial;
 
     /**
