@@ -2,6 +2,8 @@ package org.example.lab_5.config;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+
+import org.example.lab_5.filter.RequestFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -24,7 +26,13 @@ public class DispatcherConfig extends AbstractAnnotationConfigDispatcherServletI
     @Override
     public void onStartup(ServletContext aServletContext) throws ServletException {
         super.onStartup(aServletContext);
+        registerRequestFilter(aServletContext);
         registerHiddenFieldFilter(aServletContext);
+    }
+
+    private void registerRequestFilter(ServletContext aContext) {
+        aContext.addFilter("requestFilter",
+                new RequestFilter()).addMappingForUrlPatterns(null, true, "/*");
     }
 
     private void registerHiddenFieldFilter(ServletContext aContext) {

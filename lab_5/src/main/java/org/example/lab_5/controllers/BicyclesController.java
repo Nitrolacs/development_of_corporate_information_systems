@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.nio.charset.StandardCharsets;
 
 @Controller
 @RequestMapping("/bicycles")
@@ -42,7 +43,6 @@ public class BicyclesController {
                          BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "bicycles/new";
-
         bikeDAO.insert(bike);
         return "redirect:/bicycles";
     }
