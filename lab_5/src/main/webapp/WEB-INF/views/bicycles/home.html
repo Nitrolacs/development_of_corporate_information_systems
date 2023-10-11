@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://thymeleaf.org">
+    <title>Главная страница</title>
+</head>
+<body>
+    <h1>Добро пожаловать!</h1>
+    <hr/>
+    <p>Меню программы:</p>
+    <a th:href="@{../bicycles}">Просмотр всех велосипедов</a>
+    <br/>
+    <a th:href="@{../bicycles/criterion}">Просмотр велосипедов, цена которых ниже введённой</a>
+
+</body>
+</html>
