@@ -27,6 +27,18 @@ public class BicyclesController {
         return "bicycles/index";
     }
 
+    @GetMapping("/criterion")
+    public String enterPrice() {
+        return "bicycles/criterion";
+    }
+
+    @PostMapping("/criterion")
+    public String bicyclesWithLowerPrice(@RequestParam Double price, Model model) {
+        model.addAttribute("bicycles",
+                bikeDAO.findAllBicyclesWherePriceIsLower(price));
+        return "bicycles/index";
+    }
+
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("bike", bikeDAO.show(id));

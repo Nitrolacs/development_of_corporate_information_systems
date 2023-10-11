@@ -7,7 +7,7 @@
 <body>
 
 <div th:each="bike : ${bicycles}">
-    <a th:href="@{/bicycles/{id}(id=${bike.getId()})}" th:text="${bike.getName() + ', ' + bike.getPrice() + ', ' + bike.getNumberOfSpeeds() + ', ' + bike.getType() + ', ' + bike.getFrameMaterial()}">bike</a>
+    <p>Велосипед</p><a th:href="@{/bicycles/{id}(id=${bike.getId()})}" th:text="${bike.getName() + ', ' + bike.getPrice() + ', ' + bike.getNumberOfSpeeds() + ', ' + bike.getType() + ', ' + bike.getFrameMaterial()}">bike</a>
 </div>
 
 <br/>

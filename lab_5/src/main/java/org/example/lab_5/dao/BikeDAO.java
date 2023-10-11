@@ -74,16 +74,6 @@ public class BikeDAO {
     }
 
     /**
-     * Проверяет, есть ли в таблице запись с таким id
-     * @param id id
-     * @return Результат поиска записи
-     */
-    public boolean isBikeExists(int id) {
-        int result = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM bike where id=?", new Object[] { id }, Integer.class);
-        return result > 0;
-    }
-
-    /**
      * Находит все записи, цена которой ниже чем в аргументе
      * @param price Цена
      * @return Список записей, удовлетворяющих условию
