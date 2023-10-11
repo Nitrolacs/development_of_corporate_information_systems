@@ -12,17 +12,32 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
+/**
+ * Класс конфигурации веб-приложения
+ */
 @Configuration
 @EnableWebMvc
 @ComponentScan("org.example.lab_5")
 public class WebConfig implements WebMvcConfigurer {
+
+    /**
+     * Поле, которое хранит ссылку на контекст приложения Spring.
+     */
     private final ApplicationContext applicationContext;
 
+    /**
+     * Внедрение с помощью Spring
+     * @param applicationContext
+     */
     @Autowired
     public WebConfig(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
 
+    /**
+     * Создает и возвращает экземпляр класса SpringResourceTemplateResolver
+     * @return экземпляр класса
+     */
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new
@@ -34,6 +49,10 @@ public class WebConfig implements WebMvcConfigurer {
         return templateResolver;
     }
 
+    /**
+     * Создает и возвращает экземпляр класса SpringTemplateEngine
+     * @return экземпляр класса
+     */
     @Bean
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
@@ -42,6 +61,10 @@ public class WebConfig implements WebMvcConfigurer {
         return templateEngine;
     }
 
+    /**
+     * Настраивает резолверы представлений.
+     * @param registry
+     */
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();

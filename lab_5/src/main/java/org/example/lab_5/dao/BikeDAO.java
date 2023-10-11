@@ -85,6 +85,11 @@ public class BikeDAO {
         return bicycles;
     }
 
+    /**
+     * Вывод информацию по записи с id.
+     * @param id идентификатор записи
+     * @return объект найденной записи.
+     */
     public Bike show(int id) {
         return jdbcTemplate.query("SELECT * FROM Bike WHERE id=?",
                 new Object[]{id}, new BeanPropertyRowMapper<>(Bike.class)).
