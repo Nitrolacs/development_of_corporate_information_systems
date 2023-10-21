@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Новый велосипед</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/bicycles}" th:object="${bike}">
+    <label for="name">Введите название велосипеда: </label>
+    <input type="text" th:field="*{name}" id="name" />
+    <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Ошибка имени</div>
+    <br/>
+    <label for="price">Введите цену велосипеда: </label>
+    <input type="text" th:field="*{price}" id="price" />
+    <div style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Ошибка цены</div>
+    <br/>
+    <label for="numberOfSpeeds">Введите количество скоростей велосипеда: </label>
+    <input type="text" th:field="*{numberOfSpeeds}" id="numberOfSpeeds" />
+    <div style="color: red" th:if="${#fields.hasErrors('numberOfSpeeds')}" th:errors="*{numberOfSpeeds}">Ошибка количества скоростей</div>
+    <br/>
+    <label for="type">Введите тип велосипеда: </label>
+    <input type="text" th:field="*{type}" id="type" />
+    <div style="color: red" th:if="${#fields.hasErrors('type')}" th:errors="*{type}">Ошибка типа велосипеда</div>
+    <br/>
+    <label for="frameMaterial">Введите материал рамы велосипеда: </label>
+    <input type="text" th:field="*{frameMaterial}" id="frameMaterial" />
+    <div style="color: red" th:if="${#fields.hasErrors('frameMaterial')}" th:errors="*{frameMaterial}">Ошибка материала рамы</div>
+
+    <br/>
+    <input type="submit" value="Создать!"/>
+</form>
+</body>
+</html>
