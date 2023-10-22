@@ -8,3 +8,12 @@ CREATE TABLE Bike(
     type varchar NOT NULL,
     frameMaterial varchar NOT NULL
 );
+CREATE TABLE t_user(
+    id serial PRIMARY KEY,
+    username varchar NOT NULL,
+    password varchar NOT NULL
+);
+CREATE TABLE t_role(
+    id serial PRIMARY KEY,
+    name varchar NOT NULL
+);

@@ -3,15 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.49">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <Grants>1||-9223372036854775808|c|G
-1||10|c|G
-1||10|C|G
-1||10|T|G
-4||-9223372036854775808|c|G
-4||10|c|G
-4||10|C|G
-4||10|T|G</Grants>
-      <IntrospectionStateNumber>737</IntrospectionStateNumber>
+      <IntrospectionStateNumber>742</IntrospectionStateNumber>
       <ServerVersion>16.0</ServerVersion>
       <StartupTime>1697883986</StartupTime>
       <TimeZones>true ACDT
@@ -809,7 +801,7 @@ false Zulu
 13452||10|C|G
 13452||-9223372036854775808|U|G
 13452||10|U|G</Grants>
-      <IntrospectionStateNumber>737</IntrospectionStateNumber>
+      <IntrospectionStateNumber>742</IntrospectionStateNumber>
       <ObjectId>16396</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4233,9 +4225,9 @@ false Zulu
     <schema id="264" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>737</IntrospectionStateNumber>
-      <IntrospectionTimestamp>2023-10-21.17:32:56.133</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2023-10-21.10:33:00</LocalIntrospectionTimestamp>
+      <IntrospectionStateNumber>742</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2023-10-22.17:52:21.023</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2023-10-22.10:52:24</LocalIntrospectionTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -4243,18 +4235,32 @@ false Zulu
     <sequence id="265" parent="264" name="bike_id_seq">
       <DasType>integer|0s</DasType>
       <ObjectId>16397</ObjectId>
-      <SequenceIdentity>1(1)</SequenceIdentity>
+      <SequenceIdentity>1(2)</SequenceIdentity>
       <StartValue>1</StartValue>
       <StateNumber>736</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <table id="266" parent="264" name="bike">
+    <sequence id="266" parent="264" name="t_user_id_seq">
+      <DasType>integer|0s</DasType>
+      <ObjectId>16406</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>740</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="267" parent="264" name="bike">
       <ObjectId>16398</ObjectId>
       <StateNumber>736</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <column id="267" parent="266" name="id">
+    <table id="268" parent="264" name="t_user">
+      <ObjectId>16407</ObjectId>
+      <StateNumber>740</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <column id="269" parent="267" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;bike_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4263,42 +4269,42 @@ false Zulu
       <SequenceId>16397</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="268" parent="266" name="price">
+    <column id="270" parent="267" name="price">
       <DasType>double precision|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>736</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="269" parent="266" name="numberofspeeds">
+    <column id="271" parent="267" name="numberofspeeds">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>736</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="270" parent="266" name="name">
+    <column id="272" parent="267" name="name">
       <DasType>varchar|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>736</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="271" parent="266" name="type">
+    <column id="273" parent="267" name="type">
       <DasType>varchar|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>736</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="272" parent="266" name="framematerial">
+    <column id="274" parent="267" name="framematerial">
       <DasType>varchar|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StateNumber>736</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="273" parent="266" name="bike_pkey">
+    <index id="275" parent="267" name="bike_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16404</ObjectId>
@@ -4307,12 +4313,51 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="274" parent="266" name="bike_pkey">
+    <key id="276" parent="267" name="bike_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16405</ObjectId>
       <Primary>1</Primary>
       <StateNumber>736</StateNumber>
       <UnderlyingIndexId>16404</UnderlyingIndexId>
+    </key>
+    <column id="277" parent="268" name="id">
+      <DasType>integer|0s</DasType>
+      <DefaultExpression>nextval(&apos;t_user_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>740</StateNumber>
+      <SequenceId>16406</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="278" parent="268" name="username">
+      <DasType>varchar|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>740</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="279" parent="268" name="password">
+      <DasType>varchar|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>740</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="280" parent="268" name="t_user_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16413</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>740</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="281" parent="268" name="t_user_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16414</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>740</StateNumber>
+      <UnderlyingIndexId>16413</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>
