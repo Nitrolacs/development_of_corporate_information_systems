@@ -10,26 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2919fe5e-ee89-4552-8054-83ddf8dedcb8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../lab_5/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_5/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/b9ab1264-d869-486f-9c71-9fcdb9b8b075.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b9ab1264-d869-486f-9c71-9fcdb9b8b075.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b9ab1264-d869-486f-9c71-9fcdb9b8b075/storage_v2/_src_/database/db_for_java.eb5Yzg/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b9ab1264-d869-486f-9c71-9fcdb9b8b075/storage_v2/_src_/database/db_for_java.eb5Yzg/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b9ab1264-d869-486f-9c71-9fcdb9b8b075/storage_v2/_src_/database/db_for_java.eb5Yzg/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b9ab1264-d869-486f-9c71-9fcdb9b8b075/storage_v2/_src_/database/db_for_java.eb5Yzg/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b9ab1264-d869-486f-9c71-9fcdb9b8b075/storage_v2/_src_/database/db_for_java.eb5Yzg/schema/public.abK9xQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/script.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_5/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/config/AppConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_5/config/DispatcherConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/config/DispatcherConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_5/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_5/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_5/controllers/BicyclesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/controllers/BicyclesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_5/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/controllers/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_5/dao/BikeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/dao/BikeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_5/dao/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/dao/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_5/filter/RequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/filter/RequestFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_5/models/Bike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/models/Bike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_5/models/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/models/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_5/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_5/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_6/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_6/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/lab_6-1.0/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/lab_6-1.0/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/lab_6-1.0/WEB-INF/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/lab_6-1.0/WEB-INF/classes/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +33,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -67,6 +61,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -102,7 +97,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 9.0.82" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.82" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+    <configuration name="Tomcat 9.0.80" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.80" ALTERNATIVE_JRE_ENABLED="false">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="lab_6:war exploded">
@@ -201,7 +196,7 @@
       <workItem from="1697882085953" duration="321000" />
       <workItem from="1697882447216" duration="4037000" />
       <workItem from="1697967597021" duration="3987000" />
-      <workItem from="1698297785660" duration="4982000" />
+      <workItem from="1698297785660" duration="8084000" />
     </task>
     <servers />
   </component>
