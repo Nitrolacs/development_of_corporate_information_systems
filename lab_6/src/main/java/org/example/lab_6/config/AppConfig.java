@@ -1,4 +1,4 @@
-package org.example.lab_5.config;
+package org.example.lab_6.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

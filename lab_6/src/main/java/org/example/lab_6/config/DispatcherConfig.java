@@ -1,9 +1,9 @@
-package org.example.lab_5.config;
+package org.example.lab_6.config;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
-import org.example.lab_5.filter.RequestFilter;
+import org.example.lab_6.filter.RequestFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

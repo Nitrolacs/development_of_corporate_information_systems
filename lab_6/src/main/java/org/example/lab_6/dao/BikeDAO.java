@@ -1,6 +1,6 @@
-package org.example.lab_5.dao;
+package org.example.lab_6.dao;
 
-import org.example.lab_5.models.Bike;
+import org.example.lab_6.models.Bike;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

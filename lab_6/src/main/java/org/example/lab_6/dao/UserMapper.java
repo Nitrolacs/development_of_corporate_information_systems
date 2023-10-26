@@ -1,6 +1,6 @@
-package org.example.lab_5.dao;
+package org.example.lab_6.dao;
 
-import org.example.lab_5.models.User;
+import org.example.lab_6.models.User;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

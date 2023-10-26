@@ -1,7 +1,7 @@
-package org.example.lab_5.controllers;
+package org.example.lab_6.controllers;
 
-import org.example.lab_5.dao.BikeDAO;
-import org.example.lab_5.models.Bike;
+import org.example.lab_6.dao.BikeDAO;
+import org.example.lab_6.models.Bike;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.nio.charset.StandardCharsets;
 
 /**
  * Класс контроллер

@@ -1,4 +1,4 @@
-package org.example.lab_5.models;
+package org.example.lab_6.models;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,7 +11,6 @@ public class User implements UserDetails {
 
     @Size(min = 5, max = 300, message = "От 5 до 300 знаков")
     private String username;
-
 
     @Size(min = 5, max = 300, message = "От 5 до 300 знаков")
     private String password;

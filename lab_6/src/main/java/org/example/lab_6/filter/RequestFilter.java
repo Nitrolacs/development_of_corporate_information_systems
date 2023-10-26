@@ -1,4 +1,4 @@
-package org.example.lab_5.filter;
+package org.example.lab_6.filter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

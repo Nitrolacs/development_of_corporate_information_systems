@@ -1,4 +1,4 @@
-package org.example.lab_5.models;
+package org.example.lab_6.models;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -12,6 +12,9 @@ public class Role implements GrantedAuthority {
     private String name;
 
     private Set<User> users;
+
+    public Role() {
+    }
 
     public Role(Integer id) {
         this.id = id;

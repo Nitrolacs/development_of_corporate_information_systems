@@ -1,4 +1,4 @@
-package org.example.lab_5.config;
+package org.example.lab_6.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -17,7 +17,7 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan("org.example.lab_5")
+@ComponentScan("org.example.lab_6")
 public class WebConfig implements WebMvcConfigurer {
 
     /**
