@@ -10,19 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2919fe5e-ee89-4552-8054-83ddf8dedcb8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b9ab1264-d869-486f-9c71-9fcdb9b8b075.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b9ab1264-d869-486f-9c71-9fcdb9b8b075.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b9ab1264-d869-486f-9c71-9fcdb9b8b075/storage_v2/_src_/database/db_for_java.eb5Yzg/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b9ab1264-d869-486f-9c71-9fcdb9b8b075/storage_v2/_src_/database/db_for_java.eb5Yzg/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b9ab1264-d869-486f-9c71-9fcdb9b8b075/storage_v2/_src_/database/db_for_java.eb5Yzg/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b9ab1264-d869-486f-9c71-9fcdb9b8b075/storage_v2/_src_/database/db_for_java.eb5Yzg/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b9ab1264-d869-486f-9c71-9fcdb9b8b075/storage_v2/_src_/database/db_for_java.eb5Yzg/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fde9b8a8-c1ed-4c3b-a209-8308b2fe66ee.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fde9b8a8-c1ed-4c3b-a209-8308b2fe66ee.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fde9b8a8-c1ed-4c3b-a209-8308b2fe66ee/storage_v2/_src_/database/db_for_java.eb5Yzg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fde9b8a8-c1ed-4c3b-a209-8308b2fe66ee/storage_v2/_src_/database/db_for_java.eb5Yzg/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_6/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_6/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/lab_6-1.0/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/lab_6-1.0/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/lab_6-1.0/WEB-INF/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/lab_6-1.0/WEB-INF/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/script.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_6/dao/RoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/dao/RoleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_6/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +189,7 @@
       <workItem from="1697882085953" duration="321000" />
       <workItem from="1697882447216" duration="4037000" />
       <workItem from="1697967597021" duration="3987000" />
-      <workItem from="1698297785660" duration="8084000" />
+      <workItem from="1698297785660" duration="10551000" />
     </task>
     <servers />
   </component>

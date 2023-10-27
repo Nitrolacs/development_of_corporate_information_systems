@@ -11,9 +11,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -83,20 +88,24 @@ public class UserService implements UserDetailsService {
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
-        // Сохранить пользователя
-        jdbcTemplate.update("INSERT INTO t_user " +
-                        "(username, password)" +
-                        " VALUES(?, ?)",
-                user.getUsername(), user.getPassword());
+        // Сохранить пользователя и получить его ID
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection
+                    .prepareStatement("INSERT INTO t_user (username, password) VALUES(?, ?)", Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, user.getUsername());
+            ps.setString(2, user.getPassword());
+            return ps;
+        }, keyHolder);
 
-        // Получить ID вновь созданного пользователя
-        int userId = findByUsername(user.getUsername()).getId();
+        List<Map<String, Object>> keys = keyHolder.getKeyList();
+        int userId = (Integer) keys.get(0).get("id");
 
         // Сохранить связь между пользователем и его ролями
         for (Role role : user.getRoles()) {
             jdbcTemplate.update("INSERT INTO user_role " +
-                                "(user_id, role_id)" +
-                                " VALUES(?, ?)",
+                            "(user_id, role_id)" +
+                            " VALUES(?, ?)",
                     userId, role.getId());
         }
 

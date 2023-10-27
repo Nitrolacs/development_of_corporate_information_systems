@@ -24,3 +24,5 @@ CREATE TABLE user_role (
     FOREIGN KEY (user_id) REFERENCES t_user(id),
     FOREIGN KEY (role_id) REFERENCES t_role(id)
 );
+INSERT INTO t_role(id, name)
+  VALUES (1, 'ROLE_USER'), (2, 'ROLE_ADMIN');
