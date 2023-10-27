@@ -88,29 +88,26 @@ public class UserService implements UserDetailsService {
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
-        // Сохранить пользователя и получить его ID
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        jdbcTemplate.update(connection -> {
-            PreparedStatement ps = connection
-                    .prepareStatement("INSERT INTO t_user (username, password) VALUES(?, ?)", Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, user.getUsername());
-            ps.setString(2, user.getPassword());
-            return ps;
-        }, keyHolder);
+        // Сохранить пользователя
+        jdbcTemplate.update("INSERT INTO t_user " +
+                        "(username, password)" +
+                        " VALUES(?, ?)",
+                user.getUsername(), user.getPassword());
 
-        List<Map<String, Object>> keys = keyHolder.getKeyList();
-        int userId = (Integer) keys.get(0).get("id");
+        // Получить ID вновь созданного пользователя
+        int userId = findByUsername(user.getUsername()).getId();
 
         // Сохранить связь между пользователем и его ролями
         for (Role role : user.getRoles()) {
             jdbcTemplate.update("INSERT INTO user_role " +
-                            "(user_id, role_id)" +
-                            " VALUES(?, ?)",
+                                "(user_id, role_id)" +
+                                " VALUES(?, ?)",
                     userId, role.getId());
         }
 
         return true;
     }
+
 
     public boolean deleteUser(int id) {
         // Удалить связи между пользователем и его ролями
