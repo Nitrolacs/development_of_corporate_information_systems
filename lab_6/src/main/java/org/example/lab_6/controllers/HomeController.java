@@ -2,7 +2,6 @@ package org.example.lab_6.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
 /**
  * Контроллер домашней страницы приложения
  */

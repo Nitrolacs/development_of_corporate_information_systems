@@ -11,14 +11,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.jdbc.support.KeyHolder;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
 
-import java.sql.PreparedStatement;
-import java.sql.Statement;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -47,6 +43,20 @@ public class UserService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
+
+        // Загрузка ролей пользователя
+        List<Role> roles = jdbcTemplate.query(
+                "SELECT r.id, r.name FROM t_role r INNER JOIN user_role ur ON r.id = ur.role_id WHERE ur.user_id = ?",
+                new Object[]{user.getId()},
+                (rs, rowNum) -> {
+                    Role role = new Role();
+                    role.setId(rs.getInt("id"));
+                    role.setName(rs.getString("name"));
+                    return role;
+                }
+        );
+
+        user.setRoles(new HashSet<>(roles));
 
         return user;
     }
@@ -100,8 +110,8 @@ public class UserService implements UserDetailsService {
         // Сохранить связь между пользователем и его ролями
         for (Role role : user.getRoles()) {
             jdbcTemplate.update("INSERT INTO user_role " +
-                                "(user_id, role_id)" +
-                                " VALUES(?, ?)",
+                            "(user_id, role_id)" +
+                            " VALUES(?, ?)",
                     userId, role.getId());
         }
 
