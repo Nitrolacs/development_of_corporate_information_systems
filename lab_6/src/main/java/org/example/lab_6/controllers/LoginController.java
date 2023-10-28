@@ -10,9 +10,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
+/**
+ * Контроллер страницы входа
+ */
 @Controller
 public class LoginController {
 
+    /**
+     * Получение страницы с формой входа
+     * @param request
+     * @return
+     */
     @GetMapping("/login")
     public String login(HttpServletRequest request) {
         if (request.getUserPrincipal() != null) {
@@ -24,6 +32,15 @@ public class LoginController {
         return "accounts/login";
     }
 
+    /**
+     * Производит вход с полученными параметрами,
+     * в случае успеха переводит на домашнюю страницу
+     * @param username Имя пользователя
+     * @param password Пароль
+     * @param request Запрос
+     * @param model Модель
+     * @return Представление
+     */
     @PostMapping("/login")
     public String performLogin(@RequestParam("username") String username,
                                @RequestParam("password") String password,

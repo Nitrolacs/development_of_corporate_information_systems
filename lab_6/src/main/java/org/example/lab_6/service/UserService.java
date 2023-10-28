@@ -16,6 +16,11 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
+/**
+ * Сервис для работы с пользователями.
+ * Этот класс реализует интерфейс UserDetailsService для загрузки
+ * данных пользователя по его имени.
+ */
 @Service
 public class UserService implements UserDetailsService {
     @Autowired
@@ -36,6 +41,13 @@ public class UserService implements UserDetailsService {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    /**
+     * Загрузка пользователя по его имени.
+     *
+     * @param username имя пользователя
+     * @return объект UserDetails, содержащий данные пользователя
+     * @throws UsernameNotFoundException если пользователь не найден
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = findByUsername(username);
@@ -61,18 +73,35 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
+    /**
+     * Поиск пользователя по его имени.
+     *
+     * @param username имя пользователя
+     * @return объект User, содержащий данные пользователя, или null, если пользователь не найден
+     */
     public User findByUsername(String username) {
         return jdbcTemplate.query("SELECT * FROM t_user WHERE username=?",
                         new Object[]{username}, new UserMapper()).
                 stream().findAny().orElse(null);
     }
 
+    /**
+     * Поиск пользователя по его ID.
+     *
+     * @param id ID пользователя
+     * @return объект User, содержащий данные пользователя, или null, если пользователь не найден
+     */
     public User findUserById(int id) {
         return jdbcTemplate.query("SELECT * FROM t_user WHERE id=?",
                         new Object[]{id}, new UserMapper()).
                 stream().findAny().orElse(null);
     }
 
+    /**
+     * Получение списка всех пользователей.
+     *
+     * @return список всех пользователей
+     */
     public List<User> allUsers() {
         List<User> users = jdbcTemplate.query("SELECT * FROM t_user",
                 new UserMapper());
@@ -80,6 +109,12 @@ public class UserService implements UserDetailsService {
         return users;
     }
 
+    /**
+     * Сохранение пользователя.
+     *
+     * @param user объект User, содержащий данные пользователя
+     * @return true, если пользователь был успешно сохранен, false - если пользователь с таким именем уже существует
+     */
     public boolean saveUser(User user) {
         User userFromDB = findByUsername(user.getUsername());
 
@@ -118,7 +153,12 @@ public class UserService implements UserDetailsService {
         return true;
     }
 
-
+    /**
+     * Удаление пользователя.
+     *
+     * @param id ID пользователя
+     * @return true, если пользователь был успешно удален, false - в противном случае
+     */
     public boolean deleteUser(int id) {
         // Удалить связи между пользователем и его ролями
         jdbcTemplate.update("DELETE FROM user_role WHERE user_id=?", id);
@@ -128,6 +168,12 @@ public class UserService implements UserDetailsService {
         return result == 1;
     }
 
+    /**
+     * Получение списка пользователей с ID больше указанного.
+     *
+     * @param idMin минимальное значение ID
+     * @return список пользователей с ID больше указанного значения
+     */
     public List<User> usergtList(int idMin) {
         return jdbcTemplate.query("SELECT * FROM t_user WHERE id > ?",
                 new UserMapper(), idMin);

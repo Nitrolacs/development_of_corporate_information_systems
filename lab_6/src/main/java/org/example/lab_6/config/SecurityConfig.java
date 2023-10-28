@@ -12,17 +12,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.example.lab_6.service.UserService;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+/**
+ * Конфигурация безопасности веб-приложения.
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserService userService;
 
+    /**
+     * Конфигурация сервиса аутентификации.
+     * @param auth объект для построения аутентификации
+     * @throws Exception если произошла ошибка во время аутентификации
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
     }
 
+    /**
+     * Конфигурация безопасности HTTP.
+     * @param http объект для настройки безопасности HTTP
+     * @throws Exception если произошла ошибка во время настройки безопасности HTTP
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -47,6 +60,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic();
     }
 
+    /**
+     * Создание кодировщика паролей.
+     * @return новый экземпляр кодировщика паролей BCryptPasswordEncoder
+     */
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
