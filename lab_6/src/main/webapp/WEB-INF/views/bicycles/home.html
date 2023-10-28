@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-                xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8" >
@@ -8,8 +7,11 @@
 </head>
 <body>
     <h1>Добро пожаловать</h1>
-    <div sec:authorize="hasRole('ROLE_ADMIN')">
-        <h4>Вам доступны все возможности!</h4>
+     <div sec:authorize="hasRole('ADMIN')">
+        <h4>Привет, админ! Вам доступны все возможности!</h4>
+    </div>
+    <div sec:authorize="hasRole('USER') and !hasRole('ADMIN')">
+        <h4>Привет, пользователь! Рады видеть вас снова!</h4>
     </div>
     <hr/>
     <p>Меню программы:</p>

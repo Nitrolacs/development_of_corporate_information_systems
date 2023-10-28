@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>Log in with your account</title>
 </head>
 
 <body>
-<sec:authorize access="isAuthenticated()" var="isAuthenticated"/>
-<th:block th:if="${isAuthenticated}">
-    <th:redirect to="/"/>
-</th:block>
 <div>
     <form th:method="POST" th:action="@{/login}">
         <h2>Вход в систему</h2>

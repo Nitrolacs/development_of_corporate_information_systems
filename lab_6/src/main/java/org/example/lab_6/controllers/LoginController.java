@@ -14,7 +14,13 @@ import java.security.Principal;
 public class LoginController {
 
     @GetMapping("/login")
-    public String login() {
+    public String login(HttpServletRequest request) {
+        if (request.getUserPrincipal() != null) {
+            // Если пользователь уже вошел в систему, перенаправляем его на главную страницу
+            return "redirect:/";
+        }
+
+        // Если пользователь еще не вошел в систему, показываем ему страницу входа
         return "accounts/login";
     }
 
