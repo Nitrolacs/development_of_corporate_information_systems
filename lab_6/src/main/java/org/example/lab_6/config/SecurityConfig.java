@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.example.lab_6.service.UserService;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -22,24 +23,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(final HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                // Доступ только для не зарегистрированных пользователей
-                //.antMatchers("/registration").not().fullyAuthenticated()
-                .antMatchers("/").hasRole("USER")
-                .antMatchers("/bicycles").hasRole("ADMIN")
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+            .authorizeRequests()
+                .antMatchers("/login", "/registration").permitAll()
+                .antMatchers("/", "/bicycles", "/bicycles/{id}", "/bicycles/criterion").hasRole("USER")
+                .antMatchers("/bicycles/new", "/bicycles/{id}/edit").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                //Настройка для входа в систему
-                .formLogin()
+            .formLogin()
                 .loginPage("/login")
-                //Перенаправление на главную страницу после успешного входа
                 .defaultSuccessUrl("/")
+                .permitAll()
+                .and()
+            .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login")
                 .permitAll();
-                //.and()
-                //.logout()
-                //.permitAll()
-                //.logoutSuccessUrl("/");
     }
 
     @Bean
