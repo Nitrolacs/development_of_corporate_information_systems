@@ -11,9 +11,13 @@
 </div>
 
 <br/>
+
+<div sec:authorize="hasRole('ADMIN')">
 <hr/>
 
-<a th:href="@{/bicycles/new}">Создать новый велосипед</a>
+   <a th:href="@{/bicycles/new}">Создать новый велосипед</a>
+</div>
+
 
 </body>
 </html>
