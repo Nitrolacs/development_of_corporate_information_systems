@@ -9,20 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2919fe5e-ee89-4552-8054-83ddf8dedcb8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/accounts/registration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fde9b8a8-c1ed-4c3b-a209-8308b2fe66ee.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fde9b8a8-c1ed-4c3b-a209-8308b2fe66ee.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fde9b8a8-c1ed-4c3b-a209-8308b2fe66ee/storage_v2/_src_/database/db_for_java.eb5Yzg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fde9b8a8-c1ed-4c3b-a209-8308b2fe66ee/storage_v2/_src_/database/db_for_java.eb5Yzg/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_6/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_6/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_6/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/controllers/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_6/controllers/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/controllers/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_6/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab_6/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/lab_6-1.0/WEB-INF/views/registration.html" beforeDir="false" />
-    </list>
+    <list default="true" id="2919fe5e-ee89-4552-8054-83ddf8dedcb8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
