@@ -4,9 +4,14 @@ import org.example.lab_7.models.Bike;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Класс доступа к данным
@@ -21,6 +26,7 @@ public class BikeDAO {
 
     /**
      * Внедрение через конструктор
+     *
      * @param jdbcTemplate jdbcTemplate
      */
     @Autowired
@@ -30,6 +36,7 @@ public class BikeDAO {
 
     /**
      * Выполняет запрос на получение всех записей из таблицы
+     *
      * @return Список записей
      */
     public List<Bike> getBicycles() {
@@ -39,20 +46,30 @@ public class BikeDAO {
         return bicycles;
     }
 
-    /**
-     * Выполняет вставку новой записи в таблицу базы данных
-     * @param bike Объект с данными для вставки
-     */
-    public void insert(Bike bike) {
-        jdbcTemplate.update("INSERT INTO bike " +
-                        "(price, numberOfSpeeds, name, type, frameMaterial)" +
-                        " VALUES(?, ?, ?, ?, ?)",
-                bike.getPrice(), bike.getNumberOfSpeeds(), bike.getName(),
-                bike.getType(), bike.getFrameMaterial());
+    public Bike insert(Bike bike) {
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO bike " +
+                    "(price, numberOfSpeeds, name, type, frameMaterial)" +
+                    " VALUES(?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+            ps.setDouble(1, bike.getPrice());
+            ps.setInt(2, bike.getNumberOfSpeeds());
+            ps.setString(3, bike.getName());
+            ps.setString(4, bike.getType());
+            ps.setString(5, bike.getFrameMaterial());
+            return ps;
+        }, keyHolder);
+
+        Map<String, Object> keys = keyHolder.getKeys();
+        if (keys != null) {
+            bike.setId((Integer) keys.get("id"));
+        }
+        return bike;
     }
 
     /**
      * Выполняет удаление записи по её id
+     *
      * @param id id
      * @return Результат удаления
      */
@@ -63,7 +80,8 @@ public class BikeDAO {
 
     /**
      * Выполняет обновление записи в таблицы
-     * @param id id
+     *
+     * @param id      id
      * @param newBike Новые данные
      */
     public void update(int id, Bike newBike) {
@@ -75,6 +93,7 @@ public class BikeDAO {
 
     /**
      * Находит все записи, цена которой ниже чем в аргументе
+     *
      * @param price Цена
      * @return Список записей, удовлетворяющих условию
      */
@@ -87,12 +106,13 @@ public class BikeDAO {
 
     /**
      * Вывод информацию по записи с id.
+     *
      * @param id идентификатор записи
      * @return объект найденной записи.
      */
     public Bike getBikeById(int id) {
         return jdbcTemplate.query("SELECT * FROM Bike WHERE id=?",
-                new Object[]{id}, new BeanPropertyRowMapper<>(Bike.class)).
+                        new Object[]{id}, new BeanPropertyRowMapper<>(Bike.class)).
                 stream().findAny().orElse(null);
     }
 }

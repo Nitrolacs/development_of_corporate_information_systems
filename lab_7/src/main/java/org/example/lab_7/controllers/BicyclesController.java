@@ -4,6 +4,7 @@ import org.example.lab_7.dao.BikeDAO;
 import org.example.lab_7.models.Bike;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
@@ -108,18 +109,17 @@ public class BicyclesController {
         return "bicycles/new";
     }
 
-    /**
-    @PostMapping()
+    @PostMapping(headers = {"Accept=application/json"})
     @ResponseStatus(HttpStatus.CREATED)
-    public @ResponseBody Bike createBike(@Valid Bike bike,
-                                     BindingResult bindingResult, HttpServletResponse response) throws BindException {
-        if (bindingResult.hasErrors())
-            throw new BindException(bindingResult);
-        bikeDAO.insert(bike);
-        response.setHeader("Location", "/bicycles/" + bike.getId());
-        return bike; // Вернуть ресурс
+    public @ResponseBody Bike createBike(@Valid @RequestBody Bike bike, BindingResult result, HttpServletResponse response) throws BindException {
+        if (result.hasErrors()) {
+            throw new BindException(result);
+        }
+        Bike createdBike = bikeDAO.insert(bike);
+        response.setHeader("Location", "/bicycles/" + createdBike.getId());
+        return createdBike;
     }
-    **/
+
 
     /**
      * Вызывает у модели метод добавления нового велосипеда
@@ -128,9 +128,9 @@ public class BicyclesController {
      * @param bindingResult Результат проверки аннотации полей
      * @return редирект на другое представление
      */
-    @PostMapping()
+    @PostMapping(headers = {"Accept=text/html"})
     public String createBike(@ModelAttribute("bike") @Valid Bike bike,
-                         BindingResult bindingResult) {
+                             BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "bicycles/new";
         bikeDAO.insert(bike);

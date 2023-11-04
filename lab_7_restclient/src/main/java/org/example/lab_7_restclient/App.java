@@ -18,15 +18,11 @@ public class App {
         String ret = retrieveBike(1);
         System.out.println(ret);
 
-        Bike bike = new Bike();
-        bike.setName("Тестовый");
-        bike.setFrameMaterial("ЖЕЛЕЗООО");
-        bike.setType("ГОНОЧНЫЫЫЙ");
-        bike.setPrice(10000.10);
-        bike.setNumberOfSpeeds(10);
-        //System.out.println(postBikeForObject(bike).toString());
+        Bike bike = new Bike(0, 0.0, 23, "Новый", "БМХ", "Железо");
+
 
         System.out.println(Arrays.toString(retrieveBicycles()));
+        System.out.println(postBikeForObject(bike).toString());
     }
 
     public static String retrieveBike(int id) {
@@ -46,18 +42,9 @@ public class App {
 
     public static Bike postBikeForObject(Bike bike) {
         RestTemplate rest = new RestTemplate();
-        return new RestTemplate().postForObject(
+        return rest.postForObject(
                 "http://localhost:8080/bicycles",
                 bike, Bike.class
         );
-    }
-
-    public void updateBike(Bike bike) {
-        try {
-            String url = "http://localhost:8080/bicycles" + bike.getId();
-            new RestTemplate().put(new URI(url), bike);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
