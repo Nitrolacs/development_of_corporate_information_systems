@@ -32,7 +32,7 @@ public class BikeDAO {
      * Выполняет запрос на получение всех записей из таблицы
      * @return Список записей
      */
-    public List<Bike> findAll() {
+    public List<Bike> getBicycles() {
         List<Bike> bicycles = jdbcTemplate.query("SELECT * FROM bike",
                 new BeanPropertyRowMapper<>(Bike.class));
 

@@ -111,13 +111,14 @@ public class WebConfig implements WebMvcConfigurer {
         htmlResolver.setTemplateEngine(templateEngine);
 
         List<ViewResolver> resolvers = new ArrayList<>();
-        resolvers.add(new ThymeleafViewResolver(){{setTemplateEngine(templateEngine);}});
+        resolvers.add(htmlResolver);
+        resolvers.add(new BikeJsonResolver());
 
         cnResolver.setViewResolvers(resolvers);
         return cnResolver;
     }
 
-    private class BikeJsonResolver implements ViewResolver {
+    private static class BikeJsonResolver implements ViewResolver {
         public View resolveViewName(String viewName, Locale locale) throws Exception {
             MappingJackson2JsonView view = new MappingJackson2JsonView();
             view.setObjectMapper(new ObjectMapper());
