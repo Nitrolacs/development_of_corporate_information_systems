@@ -1,20 +1,34 @@
 package org.example.lab_7_restclient;
 
 import org.example.lab_7_restclient.models.Bike;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 
 public class App {
     public static void main(String[] args) {
-        String ret = retrieveBike(1);
-        System.out.println(ret);
+        if (isServerRunning("http://localhost:8080")) {
+            String ret = retrieveBike(1);
+            System.out.println(ret);
 
-        Bike bike = new Bike(null, 0.0, 10, "Новый", "БМХ", "Железо");
+            Bike bike = new Bike(null, 0.0, 10, "Новый", "БМХ", "Железо");
 
+            System.out.println(Arrays.toString(retrieveBicycles()));
+            System.out.println(postBikeForObject(bike).toString());
+        } else {
+            System.out.println("Сервер недоступен.");
+        }
+    }
 
-        System.out.println(Arrays.toString(retrieveBicycles()));
-        System.out.println(postBikeForObject(bike).toString());
+    public static boolean isServerRunning(String url) {
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            restTemplate.getForObject(url, String.class);
+            return true;
+        } catch (RestClientException ex) {
+            return false;
+        }
     }
 
     public static String retrieveBike(int id) {
