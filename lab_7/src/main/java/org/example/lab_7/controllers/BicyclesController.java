@@ -181,9 +181,19 @@ public class BicyclesController {
      * @param id идентификатор
      * @return редирект на другое представление
      */
-    @DeleteMapping(value="/{id}", headers = {"Accept=text/html"})
+    @DeleteMapping(value = "/{id}", headers = {"Accept=text/html"})
     public String delete(@PathVariable("id") int id) {
         bikeDAO.delete(id);
         return "redirect:/bicycles";
+    }
+
+    @PutMapping(value = "/{id}", headers = "Content-Type=application/json")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateBike(@Valid @RequestBody Bike newBike, BindingResult result) throws BindException {
+        System.out.println("эТОООО ЕЕЕЕЧ");
+        if (result.hasErrors()) {
+            throw new BindException(result);
+        }
+        bikeDAO.update(newBike.getId(), newBike);
     }
 }
