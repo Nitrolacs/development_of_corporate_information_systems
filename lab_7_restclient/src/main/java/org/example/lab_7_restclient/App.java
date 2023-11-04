@@ -4,6 +4,8 @@ import org.example.lab_7_restclient.models.Bike;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 
 public class App {
@@ -11,11 +13,14 @@ public class App {
         if (isServerRunning("http://localhost:8080")) {
             String ret = retrieveBike(1);
             System.out.println(ret);
+            System.out.println(Arrays.toString(retrieveBicycles()));
+            System.out.println(retrieveBicyclesInString());
 
             Bike bike = new Bike(null, 0.0, 10, "Новый", "БМХ", "Железо");
-
-            System.out.println(Arrays.toString(retrieveBicycles()));
             System.out.println(postBikeForObject(bike).toString());
+            deleteBike(6);
+            System.out.println(retrieveBike(6));
+
         } else {
             System.out.println("Сервер недоступен.");
         }
@@ -45,6 +50,13 @@ public class App {
         );
     }
 
+    public static String retrieveBicyclesInString() {
+        return new RestTemplate().getForObject(
+                "http://localhost:8080/bicycles",
+                String.class
+        );
+    }
+
 
     public static Bike postBikeForObject(Bike bike) {
         RestTemplate rest = new RestTemplate();
@@ -52,5 +64,15 @@ public class App {
                 "http://localhost:8080/bicycles",
                 bike, Bike.class
         );
+    }
+
+    public static void deleteBike(int id) {
+        RestTemplate restTemplate = new RestTemplate();
+        try {
+            restTemplate.delete(
+                    new
+                            URI("http://localhost:8080/bicycles/" + id));
+        } catch (URISyntaxException wontHappen) {
+        }
     }
 }

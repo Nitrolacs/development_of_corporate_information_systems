@@ -169,13 +169,19 @@ public class BicyclesController {
         return "redirect:/bicycles";
     }
 
+    @DeleteMapping(value = "/{id}", headers = {"Accept=application/json"})
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteBike(@PathVariable("id") int id) {
+        bikeDAO.delete(id);
+    }
+
     /**
      * Вызывает метод dao, который удаляет велосипед
      *
      * @param id идентификатор
      * @return редирект на другое представление
      */
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value="/{id}", headers = {"Accept=text/html"})
     public String delete(@PathVariable("id") int id) {
         bikeDAO.delete(id);
         return "redirect:/bicycles";
