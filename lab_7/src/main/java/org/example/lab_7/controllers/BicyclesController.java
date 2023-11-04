@@ -9,11 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Класс контроллер
@@ -189,11 +191,17 @@ public class BicyclesController {
 
     @PutMapping(value = "/{id}", headers = "Content-Type=application/json")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateBike(@Valid @RequestBody Bike newBike, BindingResult result) throws BindException {
-        System.out.println("эТОООО ЕЕЕЕЧ");
+    public ResponseEntity<?> updateBike(@PathVariable("id") int id, @Valid @RequestBody Bike newBike, BindingResult result) {
         if (result.hasErrors()) {
-            throw new BindException(result);
+            // Получить все ошибки валидации
+            List<ObjectError> errors = result.getAllErrors();
+            String errorMessage = errors.stream()
+                    .map(ObjectError::getDefaultMessage)
+                    .collect(Collectors.joining(", "));
+            // Вернуть сообщение об ошибке
+            return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
         }
         bikeDAO.update(newBike.getId(), newBike);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
