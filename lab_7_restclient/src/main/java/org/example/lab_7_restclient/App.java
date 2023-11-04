@@ -1,24 +1,16 @@
 package org.example.lab_7_restclient;
 
 import org.example.lab_7_restclient.models.Bike;
-import org.springframework.http.*;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class App {
     public static void main(String[] args) {
         String ret = retrieveBike(1);
         System.out.println(ret);
 
-        Bike bike = new Bike(0, 0.0, 23, "Новый", "БМХ", "Железо");
+        Bike bike = new Bike(null, 0.0, 10, "Новый", "БМХ", "Железо");
 
 
         System.out.println(Arrays.toString(retrieveBicycles()));

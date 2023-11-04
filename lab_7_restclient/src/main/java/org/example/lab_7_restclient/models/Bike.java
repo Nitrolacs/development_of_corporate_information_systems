@@ -1,8 +1,11 @@
 package org.example.lab_7_restclient.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * Класс велосипеда
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Bike {
 
     /**
