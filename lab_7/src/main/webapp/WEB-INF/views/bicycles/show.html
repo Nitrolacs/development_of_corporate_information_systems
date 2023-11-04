@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Велосипед</title>
+</head>
+<body>
+<p th:text="${bike.getName()}">VALUE</p>
+<p th:text="${bike.getId()}">VALUE</p>
+<p th:text="${bike.getPrice()}">VALUE</p>
+<p th:text="${bike.getNumberOfSpeeds()}">VALUE</p>
+<p th:text="${bike.getType()}">VALUE</p>
+<p th:text="${bike.getFrameMaterial()}">VALUE</p>
+
+<a th:href="@{/bicycles/{id}/edit(id=${bike.getId()})}">Редактировать</a>
+
+<form th:method="DELETE" th:action="@{/bicycles/{id}(id=${bike.getId()})}">
+    <input type="submit" value="Удалить" />
+</form>
+</body>
+</html>

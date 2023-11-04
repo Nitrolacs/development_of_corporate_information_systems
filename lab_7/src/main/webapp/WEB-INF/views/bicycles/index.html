@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все велосипеды</title>
+</head>
+<body>
+
+<div th:each="bike : ${bicycles}">
+    <p>Велосипед</p><a th:href="@{/bicycles/{id}(id=${bike.getId()})}" th:text="${bike.getName() + ', ' + bike.getPrice() + ', ' + bike.getNumberOfSpeeds() + ', ' + bike.getType() + ', ' + bike.getFrameMaterial()}">bike</a>
+</div>
+
+<br/>
+<hr/>
+
+<a th:href="@{/bicycles/new}">Создать новый велосипед</a>
+
+</body>
+</html>
