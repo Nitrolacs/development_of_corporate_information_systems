@@ -46,6 +46,12 @@ public class BikeDAO {
         return bicycles;
     }
 
+    /**
+     * Выполняет запрос на вставку новой записи в таблицу
+     *
+     * @param bike объект, который нужно вставить в таблицу
+     * @return возвращает вставленный объект
+     */
     public Bike insert(Bike bike) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {

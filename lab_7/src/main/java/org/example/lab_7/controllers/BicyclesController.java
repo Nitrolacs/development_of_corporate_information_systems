@@ -39,6 +39,11 @@ public class BicyclesController {
         this.bikeDAO = bikeDAO;
     }
 
+    /**
+     * Возвращает список всех велосипедов в формате JSON
+     *
+     * @return список объектов Bike
+     */
     @ResponseBody
     @GetMapping(headers = {"Accept=application/json"})
     public List<Bike> getBicycles() {
@@ -74,13 +79,19 @@ public class BicyclesController {
      * @param model модель
      * @return представление criterion
      */
-    @PostMapping("/criterion")
+    @GetMapping("/criterion/show")
     public String bicyclesWithLowerPrice(@RequestParam Double price, Model model) {
         model.addAttribute("bicycles",
                 bikeDAO.findAllBicyclesWherePriceIsLower(price));
         return "bicycles/index";
     }
 
+    /**
+     * Возвращает велосипед по id в формате JSON
+     *
+     * @param id идентификатор велосипеда
+     * @return объект велосипеда
+     */
     @ResponseBody
     @GetMapping(value = "/{id}", headers = {"Accept=application/json"})
     public Bike getBike(@PathVariable("id") int id) {
@@ -111,6 +122,15 @@ public class BicyclesController {
         return "bicycles/new";
     }
 
+    /**
+     * Добавляет новый велосипед в базу данных и возвращает его в формате JSON
+     *
+     * @param bike     велосипед который будет добавлен в таблицу
+     * @param result   результат проверки аннотации полей
+     * @param response объект HttpServletResponse
+     * @return объект Bike, представляющий созданный велосипед
+     * @throws BindException если не прошли валидацию
+     */
     @PostMapping(headers = {"Accept=application/json"})
     @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody Bike createBike(@Valid @RequestBody Bike bike, BindingResult result, HttpServletResponse response) throws BindException {
@@ -171,6 +191,11 @@ public class BicyclesController {
         return "redirect:/bicycles";
     }
 
+    /**
+     * Удаляет велосипед из таблицы по id
+     *
+     * @param id идентификатор велосипеда, который нужно удалить
+     */
     @DeleteMapping(value = "/{id}", headers = {"Accept=application/json"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBike(@PathVariable("id") int id) {
@@ -189,6 +214,14 @@ public class BicyclesController {
         return "redirect:/bicycles";
     }
 
+    /**
+     * Обновляет информацию о велосипеде по его идентификатору.
+     *
+     * @param id      идентификатор велосипеда, который нужно обновить
+     * @param newBike объект Bike, содержащий новые данные о велосипеде
+     * @param result  объект BindingResult, содержащий результаты валидации newBike
+     * @return ResponseEntity с кодом состояния NO_CONTENT, если обновление прошло успешно, или с кодом состояния BAD_REQUEST и сообщением об ошибке, если валидация не прошла
+     */
     @PutMapping(value = "/{id}", headers = "Content-Type=application/json")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<?> updateBike(@PathVariable("id") int id, @Valid @RequestBody Bike newBike, BindingResult result) {

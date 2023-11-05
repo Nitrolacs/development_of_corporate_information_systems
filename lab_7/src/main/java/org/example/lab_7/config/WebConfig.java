@@ -40,6 +40,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     /**
      * Внедрение с помощью Spring
+     *
      * @param applicationContext
      */
     @Autowired
@@ -49,6 +50,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     /**
      * Создает и возвращает экземпляр класса SpringResourceTemplateResolver
+     *
      * @return экземпляр класса
      */
     @Bean
@@ -65,6 +67,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     /**
      * Создает и возвращает экземпляр класса SpringTemplateEngine
+     *
      * @return экземпляр класса
      */
     @Bean
@@ -77,6 +80,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     /**
      * Настраивает резолверы представлений.
+     *
      * @param registry
      */
     @Override
@@ -87,6 +91,12 @@ public class WebConfig implements WebMvcConfigurer {
         registry.viewResolver(resolver);
     }
 
+    /**
+     * Метод, который настраивает параметры согласования содержимого для веб-приложения.
+     * Согласование содержимого позволяет выбирать подходящий формат представления данных в зависимости от запроса клиента.
+     *
+     * @param configurer объект ContentNegotiationConfigurer, который предоставляет методы для настройки согласования содержимого.
+     */
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
         configurer
@@ -94,12 +104,22 @@ public class WebConfig implements WebMvcConfigurer {
                 .ignoreAcceptHeader(false)
                 .useJaf(false)
                 .defaultContentType(MediaType.TEXT_HTML)
-                .mediaTypes(new HashMap<String, MediaType>(){
-                    {put("json", MediaType.APPLICATION_JSON);
-                    put("html", MediaType.TEXT_HTML);}
+                .mediaTypes(new HashMap<String, MediaType>() {
+                    {
+                        put("json", MediaType.APPLICATION_JSON);
+                        put("html", MediaType.TEXT_HTML);
+                    }
                 });
     }
 
+    /**
+     * Метод, который создает и возвращает объект ContentNegotiatingViewResolver, который реализует интерфейс ViewResolver.
+     * ContentNegotiatingViewResolver выбирает подходящее представление данных с помощью других реализаций ViewResolver в зависимости от согласования содержимого.
+     *
+     * @param cnManager      объект ContentNegotiationManager, который управляет стратегией согласования содержимого.
+     * @param templateEngine объект SpringTemplateEngine, который используется для обработки шаблонов Thymeleaf.
+     * @return объект ContentNegotiatingViewResolver, который выбирает подходящее представление данных.
+     */
     @Bean
     @Autowired
     public ContentNegotiatingViewResolver viewResolver(ContentNegotiationManager cnManager,
@@ -118,7 +138,19 @@ public class WebConfig implements WebMvcConfigurer {
         return cnResolver;
     }
 
+    /**
+     * Класс BikeJsonResolver, который реализует интерфейс ViewResolver.
+     * BikeJsonResolver возвращает представление данных в формате JSON, используя класс MappingJackson2JsonView.
+     */
     private static class BikeJsonResolver implements ViewResolver {
+        /**
+         * Метод, который возвращает объект View (представляет данные в формате JSON).
+         *
+         * @param viewName имя представления, которое не используется в этом методе.
+         * @param locale   локаль, которая не используется в этом методе.
+         * @return объект MappingJackson2JsonView, который представляет данные в формате JSON.
+         * @throws Exception если произошла ошибка при создании объекта View.
+         */
         public View resolveViewName(String viewName, Locale locale) throws Exception {
             MappingJackson2JsonView view = new MappingJackson2JsonView();
             view.setObjectMapper(new ObjectMapper());

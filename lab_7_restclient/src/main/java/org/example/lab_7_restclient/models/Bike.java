@@ -171,6 +171,10 @@ public class Bike {
         }
     }
 
+    /**
+     * Строковое отображение экземпляра
+     * @return строка
+     */
     @Override
     public String toString() {
         return "Bike{" +
