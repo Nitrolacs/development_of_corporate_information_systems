@@ -176,11 +176,13 @@ public class Bike implements Serializable {
      */
     @Override
     public String toString() {
-        return  "┃ Название велосипеда: " + getName() + "\n" +
-                "┃ Id велосипеда: " + getId() + "\n" +
-                "┃ Цена велосипеда: " + getPrice() + "\n" +
-                "┃ Количество скоростей: " + getNumberOfSpeeds() + "\n" +
-                "┃ Тип велосипеда: " + getType() + "\n" +
-                "┃ Материал рамы: " + getFrameMaterial();
+        return "Bike{" +
+                "id=" + id +
+                ", price=" + price +
+                ", numberOfSpeeds=" + numberOfSpeeds +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", frameMaterial='" + frameMaterial + '\'' +
+                '}';
     }
 }

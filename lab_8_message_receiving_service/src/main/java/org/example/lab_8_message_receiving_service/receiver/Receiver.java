@@ -9,6 +9,7 @@ public class Receiver {
     @RabbitListener(queues = "bike-queue",
             containerFactory = "rabbitListenerContainerFactory")
     public void listen(Message message) {
-        System.out.println("ых");
+        System.out.println("Вам пришло следующее сообщение:");
+        System.out.println(message.getMessage() + message.getBike());
     }
 }

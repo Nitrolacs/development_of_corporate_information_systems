@@ -142,10 +142,10 @@ public class BicyclesController {
         if (result.hasErrors()) {
             throw new BindException(result);
         }
+        Bike createdBike = bikeDAO.insert(bike);
         rabbitTemplate.convertAndSend("bike-queue",
                 new Message("В базу данных была добавлена " +
-                        "следующая запись: ", bike));
-        Bike createdBike = bikeDAO.insert(bike);
+                        "следующая запись: ", createdBike));
         response.setHeader("Location", "/bicycles/" + createdBike.getId());
         return createdBike;
     }
@@ -163,10 +163,10 @@ public class BicyclesController {
                              BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "bicycles/new";
+        Bike createdBike = bikeDAO.insert(bike);
         rabbitTemplate.convertAndSend("bike-queue",
                 new Message("В базу данных была добавлена " +
-                        "следующая запись: ", bike));
-        bikeDAO.insert(bike);
+                        "следующая запись: ", createdBike));
         return "redirect:/bicycles";
     }
 
@@ -198,6 +198,10 @@ public class BicyclesController {
         if (bindingResult.hasErrors())
             return "bicycles/edit";
 
+        Bike oldBike = bikeDAO.getBikeById(id);
+        rabbitTemplate.convertAndSend("bike-queue",
+                new Message("В базе данных была изменена " +
+                        "запись " + oldBike + " на: ", bike));
         bikeDAO.update(id, bike);
         return "redirect:/bicycles";
     }
@@ -210,6 +214,10 @@ public class BicyclesController {
     @DeleteMapping(value = "/{id}", headers = {"Accept=application/json"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBike(@PathVariable("id") int id) {
+        Bike deletedBike = bikeDAO.getBikeById(id);
+        rabbitTemplate.convertAndSend("bike-queue",
+                new Message("Из базы данных была удалены " +
+                        "следующая запись: ", deletedBike));
         bikeDAO.delete(id);
     }
 
@@ -221,6 +229,10 @@ public class BicyclesController {
      */
     @DeleteMapping(value = "/{id}", headers = {"Accept=text/html"})
     public String delete(@PathVariable("id") int id) {
+        Bike deletedBike = bikeDAO.getBikeById(id);
+        rabbitTemplate.convertAndSend("bike-queue",
+                new Message("Из базы данных была удалены " +
+                        "следующая запись: ", deletedBike));
         bikeDAO.delete(id);
         return "redirect:/bicycles";
     }
@@ -245,6 +257,10 @@ public class BicyclesController {
             // Вернуть сообщение об ошибке
             return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
         }
+        Bike oldBike = bikeDAO.getBikeById(id);
+        rabbitTemplate.convertAndSend("bike-queue",
+                new Message("В базе данных была изменена " +
+                        "запись " + oldBike + " на: ", newBike));
         bikeDAO.update(newBike.getId(), newBike);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
