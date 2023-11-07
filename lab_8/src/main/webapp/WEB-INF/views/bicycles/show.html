@@ -12,6 +12,10 @@
 <p th:text="${bike.getType()}">VALUE</p>
 <p th:text="${bike.getFrameMaterial()}">VALUE</p>
 
+<form th:method="POST" th:action="@{/bicycles/{id}/buy(id=${bike.getId()})}">
+    <input type="submit" value="Купить" />
+</form>
+
 <a th:href="@{/bicycles/{id}/edit(id=${bike.getId()})}">Редактировать</a>
 
 <form th:method="DELETE" th:action="@{/bicycles/{id}(id=${bike.getId()})}">

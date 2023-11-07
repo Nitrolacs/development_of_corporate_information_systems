@@ -264,4 +264,22 @@ public class BicyclesController {
         bikeDAO.update(newBike.getId(), newBike);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    /**
+     * Обрабатывает запрос на покупку велосипеда
+     *
+     * @param id идентификатор велосипеда
+     * @return редирект на страницу велосипедов
+     */
+    @PostMapping("/{id}/buy")
+    public String buyBike(@PathVariable("id") int id) {
+        Bike bike = bikeDAO.getBikeById(id);
+        if (bike != null) {
+            rabbitTemplate.convertAndSend("bike-queue",
+                    new Message("Велосипед с ID " + id + " был " +
+                            "куплен: ", bike));
+            bikeDAO.delete(id);
+        }
+        return "redirect:/bicycles";
+    }
 }
