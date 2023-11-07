@@ -2,6 +2,8 @@ package org.example.lab_8.controllers;
 
 import org.example.lab_8.dao.BikeDAO;
 import org.example.lab_8.models.Bike;
+import org.example.lab_8.models.Message;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,14 +31,17 @@ public class BicyclesController {
      */
     private final BikeDAO bikeDAO;
 
+    private final RabbitTemplate rabbitTemplate;
+
     /**
      * Внедрение при помощи Spring
      *
      * @param bikeDAO
      */
     @Autowired
-    public BicyclesController(BikeDAO bikeDAO) {
+    public BicyclesController(BikeDAO bikeDAO, RabbitTemplate rabbitTemplate) {
         this.bikeDAO = bikeDAO;
+        this.rabbitTemplate = rabbitTemplate;
     }
 
     /**
@@ -137,6 +142,9 @@ public class BicyclesController {
         if (result.hasErrors()) {
             throw new BindException(result);
         }
+        rabbitTemplate.convertAndSend("bike-queue",
+                new Message("В базу данных была добавлена " +
+                        "следующая запись: ", bike));
         Bike createdBike = bikeDAO.insert(bike);
         response.setHeader("Location", "/bicycles/" + createdBike.getId());
         return createdBike;
@@ -155,6 +163,9 @@ public class BicyclesController {
                              BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "bicycles/new";
+        rabbitTemplate.convertAndSend("bike-queue",
+                new Message("В базу данных была добавлена " +
+                        "следующая запись: ", bike));
         bikeDAO.insert(bike);
         return "redirect:/bicycles";
     }
