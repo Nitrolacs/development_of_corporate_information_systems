@@ -9,10 +9,23 @@ import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Класс JmsConfig представляет собой конфигурацию для RabbitMQ.
+ * Он помечен аннотацией @Configuration, что указывает на то, что этот класс содержит методы @Bean.
+ */
 @Configuration
 public class JmsConfig {
+
+    /**
+     * Название очереди сообщений
+     */
     static final String queueName = "bike-queue";
 
+    /**
+     * Этот метод создает новый объект RabbitTemplate.
+     * Он также объявляет новую очередь с именем, определенным в поле queueName.
+     * @return Возвращает новый объект RabbitTemplate.
+     */
     @Bean
     RabbitTemplate rabbitTemplate() {
         CachingConnectionFactory connectionFactory =

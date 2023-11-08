@@ -31,6 +31,9 @@ public class BicyclesController {
      */
     private final BikeDAO bikeDAO;
 
+    /**
+     * RabbitTemplate
+     */
     private final RabbitTemplate rabbitTemplate;
 
     /**
@@ -216,7 +219,7 @@ public class BicyclesController {
     public void deleteBike(@PathVariable("id") int id) {
         Bike deletedBike = bikeDAO.getBikeById(id);
         rabbitTemplate.convertAndSend("bike-queue",
-                new Message("Из базы данных была удалены " +
+                new Message("Из базы данных была удалена " +
                         "следующая запись: ", deletedBike));
         bikeDAO.delete(id);
     }

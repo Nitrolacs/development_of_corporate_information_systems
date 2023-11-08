@@ -74,7 +74,7 @@ public class App {
      */
     public static String retrieveBike(int id) {
         return new RestTemplate().getForObject(
-                "http://localhost:8080/lab_7-1.0/bicycles/{id}",
+                "http://localhost:8080/lab_8-1.0/bicycles/{id}",
                 String.class, id
         );
     }
@@ -86,7 +86,7 @@ public class App {
      */
     public static Bike[] retrieveBicycles() {
         return new RestTemplate().getForObject(
-                "http://localhost:8080/lab_7-1.0/bicycles",
+                "http://localhost:8080/lab_8-1.0/bicycles",
                 Bike[].class
         );
     }
@@ -98,7 +98,7 @@ public class App {
      */
     public static String retrieveBicyclesInString() {
         return new RestTemplate().getForObject(
-                "http://localhost:8080/lab_7-1.0/bicycles",
+                "http://localhost:8080/lab_8-1.0/bicycles",
                 String.class
         );
     }
@@ -112,7 +112,7 @@ public class App {
     public static Bike postBikeForObject(Bike bike) {
         RestTemplate rest = new RestTemplate();
         return rest.postForObject(
-                "http://localhost:8080/lab_7-1.0/bicycles",
+                "http://localhost:8080/lab_8-1.0/bicycles",
                 bike, Bike.class
         );
     }
@@ -127,7 +127,7 @@ public class App {
         try {
             restTemplate.delete(
                     new
-                            URI("http://localhost:8080/lab_7-1.0/bicycles/" + id));
+                            URI("http://localhost:8080/lab_8-1.0/bicycles/" + id));
         } catch (URISyntaxException wontHappen) {
         }
     }
@@ -140,7 +140,7 @@ public class App {
     public static void updateBike(Bike bike) throws
             BikeException {
         try {
-            String url = "http://localhost:8080/lab_7-1.0/bicycles/" +
+            String url = "http://localhost:8080/lab_8-1.0/bicycles/" +
                     bike.getId();
             new RestTemplate().put(new URI(url), bike);
         } catch (URISyntaxException e) {
